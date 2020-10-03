@@ -1,0 +1,67 @@
+{
+  "name": "Risque",
+  "fields": [
+    {
+      "fieldName": "risquenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descrisque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "impact",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "probability",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "detection",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "risqueAnalyse",
+      "otherEntityRelationshipName": "risque",
+      "relationshipName": "risqueanalyse"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "risqueaction",
+      "otherEntityRelationshipName": "risque",
+      "relationshipName": "risqueaction"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "process",
+      "otherEntityRelationshipName": "risque",
+      "relationshipName": "processus",
+      "otherEntityField": "id",
+      "ownerSide": false
+    },
+    {
+      "relationshipName": "risqueResiduel",
+      "otherEntityName": "risqueResiduel",
+      "relationshipType": "one-to-one",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "risque"
+    }
+  ],
+  "changelogDate": "20200909221336",
+  "entityTableName": "risque",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": false,
+  "databaseType": "sql"
+}

@@ -1,0 +1,76 @@
+entity Risque {
+
+Risquenom String,
+Descrisque String,
+Impact Long,
+Probability Long,
+Detection Long
+
+}
+
+entity RisqueAnalyse{
+RisqueCause String,
+TypeCause String,
+
+RisqueCons String ,
+Description String
+
+}
+
+entity ProprietaireAction{
+Nom String,
+Prenom String,
+
+Email String 
+
+
+}
+
+
+entity Risqueaction{
+
+Action String,
+Planaction String,
+TempsAction Long,
+CoutAction Long
+}
+
+entity Process{
+
+NameProcess String,
+Fonction String,
+Description String
+}
+
+
+
+
+
+relationship OneToMany{
+
+Risque{risqueanalyse} to RisqueAnalyse{risque}
+
+
+
+}
+relationship OneToMany{
+
+Risque{risqueaction} to Risqueaction{risque}
+
+
+}
+
+
+
+relationship ManyToMany{
+Process{risque} to Risque{processus},
+
+
+}
+
+relationship ManyToMany{
+ProprietaireAction{risqueaction} to Risqueaction{ProprietaireAction},
+
+
+}
+paginate Risque with infinite-scroll

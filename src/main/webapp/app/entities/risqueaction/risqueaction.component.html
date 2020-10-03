@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kompliansApp.risqueaction.home.title">Risqueactions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risqueaction" [routerLink]="['/risqueaction/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="kompliansApp.risqueaction.home.createLabel">
+            Create a new Risqueaction
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="risqueactions?.length === 0">
+        <span jhiTranslate="kompliansApp.risqueaction.home.notFound">No risqueactions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="risqueactions && risqueactions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.action">Action</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.planaction">Planaction</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.tempsAction">Temps Action</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.coutAction">Cout Action</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.risque">Risque</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let risqueaction of risqueactions ;trackBy: trackId">
+                    <td><a [routerLink]="['/risqueaction', risqueaction.id, 'view']">{{ risqueaction.id }}</a></td>
+                    <td>{{ risqueaction.action }}</td>
+                    <td>{{ risqueaction.planaction }}</td>
+                    <td>{{ risqueaction.tempsAction }}</td>
+                    <td>{{ risqueaction.coutAction }}</td>
+                    <td>
+                        <div *ngIf="risqueaction.risque">
+                            <a [routerLink]="['/risque', risqueaction.risque?.id, 'view']" >{{ risqueaction.risque?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/risqueaction', risqueaction.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/risqueaction', risqueaction.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(risqueaction)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

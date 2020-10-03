@@ -1,0 +1,27 @@
+{
+  "kompliansApp": {
+    "risqueaction": {
+      "home": {
+        "title": "Risqueactions",
+        "createLabel": "Créer un nouveau Risqueaction",
+        "createOrEditLabel": "Créer ou éditer un Risqueaction",
+        "notFound": "Aucun Risqueaction trouvé"
+      },
+      "created": "Un nouveau Risqueaction a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Risqueaction avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Risqueaction avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Risqueaction {{ id }} ?"
+      },
+      "detail": {
+        "title": "Risqueaction"
+      },
+      "action": "Action",
+      "planaction": "Planaction",
+      "tempsAction": "Temps Action",
+      "coutAction": "Cout Action",
+      "risque": "Risque",
+      "proprietaireAction": "Proprietaire Action"
+    }
+  }
+}

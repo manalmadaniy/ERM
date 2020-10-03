@@ -1,0 +1,41 @@
+{
+  "name": "RisqueAnalyse",
+  "fields": [
+    {
+      "fieldName": "risqueCause",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeCause",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "risqueCons",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "risque",
+      "otherEntityRelationshipName": "risqueanalyse",
+      "relationshipName": "risque",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200909221436",
+  "entityTableName": "risque_analyse",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

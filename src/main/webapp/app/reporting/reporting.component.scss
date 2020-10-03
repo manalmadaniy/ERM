@@ -1,0 +1,19 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+
+}
+
+
+mat-drawer{
+    width: 200px;
+}
+
+mat-drawer-container{
+    height: 500px;
+}
+
+mat-drawer-content {
+  padding: 10px;
+}

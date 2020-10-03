@@ -1,0 +1,30 @@
+{
+  "kompliansApp": {
+    "risque": {
+      "home": {
+        "title": "Risques",
+        "createLabel": "Créer un nouveau Risque",
+        "createOrEditLabel": "Créer ou éditer un Risque",
+        "notFound": "Aucun Risque trouvé"
+      },
+      "created": "Un nouveau Risque a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Risque avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Risque avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Risque {{ id }} ?"
+      },
+      "detail": {
+        "title": "Risque"
+      },
+      "risquenom": "Risquenom",
+      "descrisque": "Descrisque",
+      "impact": "Impact",
+      "probability": "Probability",
+      "detection": "Detection",
+      "risqueanalyse": "Risqueanalyse",
+      "risqueaction": "Risqueaction",
+      "processus": "Processus",
+      "risqueResiduel": "Risque Residuel"
+    }
+  }
+}

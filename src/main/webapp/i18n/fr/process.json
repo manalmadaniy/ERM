@@ -1,0 +1,26 @@
+{
+  "kompliansApp": {
+    "process": {
+      "home": {
+        "title": "Processes",
+        "createLabel": "Créer un nouveau Process",
+        "createOrEditLabel": "Créer ou éditer un Process",
+        "notFound": "Aucun Process trouvé"
+      },
+      "created": "Un nouveau Process a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Process avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Process avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Process {{ id }} ?"
+      },
+      "detail": {
+        "title": "Process"
+      },
+      "nameProcess": "Name Process",
+      "fonction": "Fonction",
+      "description": "Description",
+      "date": "Date",
+      "risque": "Risque"
+    }
+  }
+}

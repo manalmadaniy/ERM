@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="risque">
+            <h2><span jhiTranslate="kompliansApp.risque.detail.title">Risque</span> {{ risque.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kompliansApp.risque.risquenom">Risquenom</span></dt>
+                <dd>
+                    <span>{{ risque.risquenom }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.risque.descrisque">Descrisque</span></dt>
+                <dd>
+                    <span>{{ risque.descrisque }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.risque.impact">Impact</span></dt>
+                <dd>
+                    <span>{{ risque.impact }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.risque.probability">Probability</span></dt>
+                <dd>
+                    <span>{{ risque.probability }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.risque.detection">Detection</span></dt>
+                <dd>
+                    <span>{{ risque.detection }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/risque', risque.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

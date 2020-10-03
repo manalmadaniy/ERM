@@ -1,0 +1,25 @@
+{
+  "kompliansApp": {
+    "proprietaireAction": {
+      "home": {
+        "title": "ProprietaireActions",
+        "createLabel": "Créer un nouveau Proprietaire Action",
+        "createOrEditLabel": "Créer ou éditer un Proprietaire Action",
+        "notFound": "Aucun Proprietaire Action trouvé"
+      },
+      "created": "Un nouveau Proprietaire Action a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Proprietaire Action avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Proprietaire Action avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Proprietaire Action {{ id }} ?"
+      },
+      "detail": {
+        "title": "Proprietaire Action"
+      },
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "email": "Email",
+      "risqueaction": "Risqueaction"
+    }
+  }
+}

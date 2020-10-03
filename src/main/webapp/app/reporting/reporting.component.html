@@ -1,0 +1,20 @@
+
+
+
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen"><jhi-sidebar></jhi-sidebar></mat-drawer>
+    <mat-drawer-content>
+        
+        <button (click)="SideBarToggle()"   class="btn" ><i class="fa fa-bars"></i></button>
+
+        <router-outlet></router-outlet>
+
+    
+
+
+    </mat-drawer-content>
+
+
+
+</mat-drawer-container>

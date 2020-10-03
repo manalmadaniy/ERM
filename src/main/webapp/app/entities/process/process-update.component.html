@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-process-heading" jhiTranslate="kompliansApp.process.home.createOrEditLabel">Create or edit a Process</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.process.nameProcess" for="field_nameProcess">Name Process</label>
+               
+                           <select  type="text" class="form-control" name="nameProcess" id="field_nameProcess"
+                           formControlName="nameProcess">
+                            <option value='processus operationnels'>processus operationnels</option>
+                            <option value='processus de mesure'>processus de mesure</option>
+                           >
+
+
+                          </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.process.fonction" for="field_fonction">Fonction</label>
+                    <input type="text" class="form-control" name="fonction" id="field_fonction"
+                           formControlName="fonction"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.process.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.process.date" for="field_date">Date</label>
+                    
+                           <select  type="text" class="form-control" name="date" id="field_date"
+                           formControlName="date">
+                            <option value='Janvier'>Janvier</option>
+                            <option value='Fevrier'>Fevrier</option>
+                            <option value='Mars'>Mars</option>
+                            <option value='Avril'>Avril</option>
+                            <option value='Mai'>Mai</option>
+                            <option value='Juin'>Juin</option>
+                            <option value='Juillet'>Juillet</option>
+                            <option value='Aout'>Aout</option>
+                            <option value='Septembre'>Septembre</option>
+                            <option value='Octobre'>Octobre</option>
+                            <option value='Novembre'>Novembre</option>
+                            <option value='Decembre'>Decembre</option>
+
+
+                          </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="kompliansApp.process.risque" for="field_risques">Risque</label>
+                    <select class="form-control" id="field_risques" multiple name="risques" formControlName="risques">
+                        <option [ngValue]="getSelected(editForm.get('risques')!.value, risqueOption)" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

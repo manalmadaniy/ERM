@@ -1,0 +1,26 @@
+{
+  "kompliansApp": {
+    "risqueAnalyse": {
+      "home": {
+        "title": "RisqueAnalyses",
+        "createLabel": "Créer un nouveau Risque Analyse",
+        "createOrEditLabel": "Créer ou éditer un Risque Analyse",
+        "notFound": "Aucun Risque Analyse trouvé"
+      },
+      "created": "Un nouveau Risque Analyse a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Risque Analyse avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Risque Analyse avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Risque Analyse {{ id }} ?"
+      },
+      "detail": {
+        "title": "Risque Analyse"
+      },
+      "risqueCause": "Risque Cause",
+      "typeCause": "Type Cause",
+      "risqueCons": "Risque Cons",
+      "description": "Description",
+      "risque": "Risque"
+    }
+  }
+}

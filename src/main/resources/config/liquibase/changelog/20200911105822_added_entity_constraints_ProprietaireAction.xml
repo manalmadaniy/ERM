@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ProprietaireAction.
+    -->
+    <changeSet id="20200911105822-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="proprietaire_action_id"
+                                 baseTableName="proprietaire_action_risqueaction"
+                                 constraintName="fk_proprietaire_action_risqueaction_proprietaire_action_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="proprietaire_action"/>
+
+        <addForeignKeyConstraint baseColumnNames="risqueaction_id"
+                                 baseTableName="proprietaire_action_risqueaction"
+                                 constraintName="fk_proprietaire_action_risqueaction_risqueaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="risqueaction"/>
+        
+    </changeSet>
+</databaseChangeLog>

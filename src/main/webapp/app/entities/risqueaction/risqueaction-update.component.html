@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-risqueaction-heading" jhiTranslate="kompliansApp.risqueaction.home.createOrEditLabel">Create or edit a Risqueaction</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueaction.risque" for="field_risque">Risque</label>
+                    <select class="form-control" id="field_risque" name="risque" formControlName="risque">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="risqueOption.id === editForm.get('risque')!.value?.id ? editForm.get('risque')!.value : risqueOption" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueaction.action" for="field_action">Action</label>
+                   
+                           <select   class="form-control" name="action" id="field_action"
+                           formControlName="action">
+                            <option value="Agir">Agir</option>
+                            <option value="Négliger">Négliger</option>
+                          
+                          </select>
+                </div>
+
+                <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left">
+                      <span>Justificatif</span>
+                      <input type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload your file">
+                    </div>
+                  </div>
+                  <br/>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueaction.planaction" for="field_planaction">Planaction</label>
+                    <input type="text" class="form-control" name="planaction" id="field_planaction"
+                           formControlName="planaction"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueaction.tempsAction" for="field_tempsAction">Temps Action</label>
+                    <input type="number" class="form-control" name="tempsAction" id="field_tempsAction"
+                           formControlName="tempsAction"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueaction.coutAction" for="field_coutAction">Cout Action</label>
+                    <input type="number" class="form-control" name="coutAction" id="field_coutAction"
+                           formControlName="coutAction"/>
+                </div>
+
+                <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left">
+                      <span>Facture</span>
+                      <input type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload your file">
+                    </div>
+                  </div>
+               <br />
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

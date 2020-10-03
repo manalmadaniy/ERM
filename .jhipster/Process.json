@@ -1,0 +1,44 @@
+{
+  "name": "Process",
+  "fields": [
+    {
+      "fieldName": "nameProcess",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fonction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "risque",
+      "otherEntityRelationshipName": "processus",
+      "relationshipName": "risque",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200909221636",
+  "entityTableName": "process",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": false,
+  "databaseType": "sql"
+}

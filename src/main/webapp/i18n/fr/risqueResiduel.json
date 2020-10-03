@@ -1,0 +1,25 @@
+{
+  "kompliansApp": {
+    "risqueResiduel": {
+      "home": {
+        "title": "RisqueResiduels",
+        "createLabel": "Créer un nouveau Risque Residuel",
+        "createOrEditLabel": "Créer ou éditer un Risque Residuel",
+        "notFound": "Aucun Risque Residuel trouvé"
+      },
+      "created": "Un nouveau Risque Residuel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Risque Residuel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Risque Residuel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Risque Residuel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Risque Residuel"
+      },
+      "impact": "Impact",
+      "probabilite": "Probabilite",
+      "detection": "Detection",
+      "risque": "Risque"
+    }
+  }
+}

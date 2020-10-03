@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="process">
+            <h2><span jhiTranslate="kompliansApp.process.detail.title">Process</span> {{ process.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kompliansApp.process.nameProcess">Name Process</span></dt>
+                <dd>
+                    <span>{{ process.nameProcess }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.process.fonction">Fonction</span></dt>
+                <dd>
+                    <span>{{ process.fonction }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.process.description">Description</span></dt>
+                <dd>
+                    <span>{{ process.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.process.date">Date</span></dt>
+                <dd>
+                    <span>{{ process.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="kompliansApp.process.risque">Risque</span></dt>
+                <dd>
+                    <span *ngFor="let risque of process.risques; let last = last">
+                        <a [routerLink]="['/risque', risque?.id, 'view']">{{ risque.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/process', process.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

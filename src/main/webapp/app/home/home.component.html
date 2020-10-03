@@ -1,0 +1,115 @@
+
+  
+
+    <div  >
+
+        <div class="background" style="background-image: url('https://www.objectif-emploi-orientation.fr/wp-content/uploads/2018/09/risk-manager.jpg');  background-repeat: no-repeat;   background-size: 100% 100%;
+        ">
+
+
+
+          
+    
+        </div>
+      
+        <mat-divider></mat-divider>
+        <div class="jumbotron text-center"><h1>Les Caractéristiques</h1>
+       </div> 
+
+        <mat-divider></mat-divider>
+<div> <h2> Nous vous proposons un moyen simple de gérer les défis de gestion des risques les plus complexes.</h2></div>
+
+        <mat-divider></mat-divider>
+        <div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
+                <mat-card fxFlex="50"><h1>Identification des risques
+                    </h1><img src="https://www.standardfusion.com/wp-content/uploads/2019/07/risk_assessment-SS.png"/><p>
+                        En tirant parti de l'utilisation de notre bibliothèque de menaces intégrée, nous facilitons le processus d'identification des risques qui vous sont applicables. Le logiciel StandardFusion GRC vous permet de suivre non seulement le risque, mais également les actifs associés.</p></mat-card>
+                
+                <mat-card fxFlex="50"> <h1>Evaluation des Risques</h1> 
+                    <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/risk_analysis-SS.png"/>
+               <p>
+                Une fois identifiés, vous pouvez évaluer vos risques à l'aide de l'une de nos nombreuses méthodologies de risque qualitatives et quantitatives incluses, ou définir vos propres calculs. </p>
+               
+                </mat-card>
+
+            </div>
+            <div>
+                <mat-card fxFlex="50"> <h1>
+                    Créer des liens
+                    Là où ils comptent</h1> 
+                    <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/Single-Source-copy.png"/>
+               <p>
+
+                Reliez les contrôles spécifiques à l'organisation à vos risques tout en suivant la maturité, les tests et l'efficacité des contrôles. Identifiez les processus qui atténuent vos risques et identifiez facilement les menaces pour votre organisation.               
+                </mat-card>
+
+                <mat-card fxFlex="50"> <h1>
+                  Traitement Des Risques</h1> 
+                    <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/control_management-SS.png"/>
+               <p>
+
+
+                Connectez vos risques aux contrôles d'atténuation pour montrer comment votre organisation traite ses menaces. Visualisez sur une carte de chaleur ou dans un rapport pour avoir une vue globale des risques qui vous empêchent de dormir la nuit.</p>                </mat-card>
+            </div>
+            <div>
+                <mat-card fxFlex="50"> <h1>
+                    Data and
+                    Reporting
+                    </h1> 
+                      <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/data_reporting-SS.png"/>
+                 <p>
+                    Générez de superbes rapports pour tous les publics, qu'il s'agisse de résumés de haut niveau ou de rapports de conformité détaillés. exploitez les données de StandardFusion pour fournir des informations sur votre organisation.
+  
+                  </p>          
+                      </mat-card>
+              
+
+
+                  <mat-card fxFlex="50"> <h1>
+                    Analyse des Risques </h1> 
+                      <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/Graph-SS.png"/>
+                 <p>
+  
+  
+              
+Surveillez l'état de vos risques et voyez comment ils évoluent au fil du temps. Suivez les progrès et comprenez comment les changements affectent votre entreprise. Suivez les tendances et analysez les effets que les facteurs internes et externes affectent vos niveaux de risque au fil du temps.</p>                </mat-card>
+              
+
+
+</div>
+
+
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div [ngSwitch]="isAuthenticated()">
+            <div class="alert alert-success" *ngSwitchCase="true">
+                <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
+                    [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}".</span>
+            </div>
+
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+            </div>
+
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
+                <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+            </div>
+        </div>
+
+        <p >
+            If you have any question on Komplians:
+        </p>
+
+        <ul>
+            <li><a href="https://komplians.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage">Komplians homepage</a></li>
+           
+        </ul>
+
+        
+   
+

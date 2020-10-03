@@ -1,0 +1,51 @@
+{
+  "name": "Risqueaction",
+  "fields": [
+    {
+      "fieldName": "action",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "planaction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tempsAction",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "coutAction",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "risque",
+      "otherEntityRelationshipName": "risqueaction",
+      "relationshipName": "risque",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "proprietaireAction",
+      "otherEntityRelationshipName": "risqueaction",
+      "relationshipName": "proprietaireAction",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200909221536",
+  "entityTableName": "risqueaction",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": false,
+  "databaseType": "sql"
+}

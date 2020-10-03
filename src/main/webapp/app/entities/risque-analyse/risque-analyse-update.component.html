@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-risque-analyse-heading" jhiTranslate="kompliansApp.risqueAnalyse.home.createOrEditLabel">Create or edit a Risque Analyse</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.risqueCause" for="field_risqueCause">Risque Cause</label>
+                    <input type="text" class="form-control" name="risqueCause" id="field_risqueCause"
+                           formControlName="risqueCause"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.typeCause" for="field_typeCause">Type Cause</label>
+                    <select name="cars" id="cars">
+                        <option value="volvo">Main Oeuvre</option>
+                        <option value="saab">Metier</option>
+                        <option value="opel">Materiel</option>
+                      </select>
+                    <input type="text" class="form-control" name="typeCause" id="field_typeCause"
+                           formControlName="typeCause"/>
+                           
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.risqueCons" for="field_risqueCons">Risque Cons</label>
+                    <input type="text" class="form-control" name="risqueCons" id="field_risqueCons"
+                           formControlName="risqueCons"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.risque" for="field_risque">Risque</label>
+                    <select class="form-control" id="field_risque" name="risque" formControlName="risque">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="risqueOption.id === editForm.get('risque')!.value?.id ? editForm.get('risque')!.value : risqueOption" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

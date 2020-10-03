@@ -1,0 +1,38 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "risque",
+      "otherEntityName": "risque",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "risquenom",
+      "ownerSide": true,
+      "useJPADerivedIdentifier": true,
+      "otherEntityRelationshipName": "RR"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "impact",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "probabilite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "detection",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20201001094835",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "risque_residuel",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no"
+}

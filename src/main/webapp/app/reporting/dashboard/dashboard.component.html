@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
+        <mat-card fxFlex="50">
+            <jhi-bars></jhi-bars>
+        </mat-card>
+
+        <mat-card fxFlex="50">
+            <jhi-line></jhi-line>
+        </mat-card>
+
+
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
+        <mat-card fxFlex="50">
+            <jhi-areas></jhi-areas>
+        </mat-card>
+
+        <mat-card fxFlex="50">
+            <jhi-treemap></jhi-treemap>
+        </mat-card>
+
+
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+<br>
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
+        <mat-card fxFlex="50">
+            <jhi-circle></jhi-circle>
+        </mat-card>
+
+        <mat-card fxFlex="50">
+            <table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                        <tr>
+                            <th scope="col"><span>Risque Cause</span></th>
+                            <th scope="col"><span>Type Cause</span></th>
+
+                            <th scope="col"><span>Risque Cons</span></th>
+                            <th scope="col"><span>Description</span></th>
+                            <th scope="col"><span>Risque</span></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let risqueAnalyse of risqueAnalyses ;trackBy: trackId">
+                        
+                            <td>{{ risqueAnalyse.risqueCause }}</td>
+                            <td>{{ risqueAnalyse.typeCause }}</td>
+                            <td>{{ risqueAnalyse.risqueCons }}</td>
+                            <td>{{ risqueAnalyse.description }}</td>
+                            <td>
+                                <div *ngIf="risqueAnalyse.risque">
+                                    <a
+                                        [routerLink]="['/risque', risqueAnalyse.risque?.id, 'view']">{{ risqueAnalyse.risque?.id }}</a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+
+
+    </div>
+</div>
+<br />
+<mat-divider></mat-divider>
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
+        <mat-card fxFlex="50">
+            <jhi-areas></jhi-areas>
+        </mat-card>
+
+        <mat-card fxFlex="50">
+            <jhi-treemap></jhi-treemap>
+        </mat-card>
+
+
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+<br>

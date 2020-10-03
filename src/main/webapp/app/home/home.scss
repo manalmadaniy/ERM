@@ -1,0 +1,40 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.hipster {
+  display: inline-block;
+  width: 347px;
+  height: 497px;
+  background: url('../../content/images/0.png') no-repeat center top;
+  background-size: contain;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    .hipster {
+      background: url('../../content/images/0.png') no-repeat center top;
+      background-size: contain;
+    }
+}
+
+img{
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 30%;
+}
+.jumbotron {
+  background-color: #669999; /* Orange */
+  color: #ffffff;
+}
+
+.background {
+
+  padding: 250px 100px;
+
+}
