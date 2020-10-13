@@ -39,7 +39,7 @@ export const proprietaireActionRoute: Routes = [
     path: '',
     component: ProprietaireActionComponent,
     data: {
-      authorities: ['ROLE_USER','ROLE_ADMIN'],
+      authorities: [Authority.USER],
       pageTitle: 'kompliansApp.proprietaireAction.home.title',
     },
     canActivate: [UserRouteAccessService],

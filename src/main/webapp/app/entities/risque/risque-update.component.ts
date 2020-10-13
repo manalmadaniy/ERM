@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IRisque, Risque } from 'app/shared/model/risque.model';
 import { RisqueService } from './risque.service';
+import { IProcess } from 'app/shared/model/process.model';
+import { ProcessService } from 'app/entities/process/process.service';
 
 @Component({
   selector: 'jhi-risque-update',
@@ -14,6 +16,7 @@ import { RisqueService } from './risque.service';
 })
 export class RisqueUpdateComponent implements OnInit {
   isSaving = false;
+  processes: IProcess[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -22,13 +25,21 @@ export class RisqueUpdateComponent implements OnInit {
     impact: [],
     probability: [],
     detection: [],
+    process: [],
   });
 
-  constructor(protected risqueService: RisqueService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected risqueService: RisqueService,
+    protected processService: ProcessService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ risque }) => {
       this.updateForm(risque);
+
+      this.processService.query().subscribe((res: HttpResponse<IProcess[]>) => (this.processes = res.body || []));
     });
   }
 
@@ -40,6 +51,7 @@ export class RisqueUpdateComponent implements OnInit {
       impact: risque.impact,
       probability: risque.probability,
       detection: risque.detection,
+      process: risque.process,
     });
   }
 
@@ -66,6 +78,7 @@ export class RisqueUpdateComponent implements OnInit {
       impact: this.editForm.get(['impact'])!.value,
       probability: this.editForm.get(['probability'])!.value,
       detection: this.editForm.get(['detection'])!.value,
+      process: this.editForm.get(['process'])!.value,
     };
   }
 
@@ -83,5 +96,9 @@ export class RisqueUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IProcess): any {
+    return item.id;
   }
 }

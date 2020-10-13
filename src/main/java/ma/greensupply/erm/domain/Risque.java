@@ -1,6 +1,7 @@
 package ma.greensupply.erm.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -47,14 +48,13 @@ public class Risque implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Risqueaction> risqueactions = new HashSet<>();
 
-    @ManyToMany(mappedBy = "risques")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private Set<Process> processuses = new HashSet<>();
-
     @OneToOne(mappedBy = "risque")
     @JsonIgnore
     private RisqueResiduel risqueResiduel;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "risques", allowSetters = true)
+    private Process process;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -180,31 +180,6 @@ public class Risque implements Serializable {
         this.risqueactions = risqueactions;
     }
 
-    public Set<Process> getProcessuses() {
-        return processuses;
-    }
-
-    public Risque processuses(Set<Process> processes) {
-        this.processuses = processes;
-        return this;
-    }
-
-    public Risque addProcessus(Process process) {
-        this.processuses.add(process);
-        process.getRisques().add(this);
-        return this;
-    }
-
-    public Risque removeProcessus(Process process) {
-        this.processuses.remove(process);
-        process.getRisques().remove(this);
-        return this;
-    }
-
-    public void setProcessuses(Set<Process> processes) {
-        this.processuses = processes;
-    }
-
     public RisqueResiduel getRisqueResiduel() {
         return risqueResiduel;
     }
@@ -216,6 +191,19 @@ public class Risque implements Serializable {
 
     public void setRisqueResiduel(RisqueResiduel risqueResiduel) {
         this.risqueResiduel = risqueResiduel;
+    }
+
+    public Process getProcess() {
+        return process;
+    }
+
+    public Risque process(Process process) {
+        this.process = process;
+        return this;
+    }
+
+    public void setProcess(Process process) {
+        this.process = process;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

@@ -33,8 +33,6 @@ export class ProprietaireActionUpdatePage {
   prenomInput = element(by.id('field_prenom'));
   emailInput = element(by.id('field_email'));
 
-  risqueactionSelect = element(by.id('field_risqueaction'));
-
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
@@ -61,22 +59,6 @@ export class ProprietaireActionUpdatePage {
 
   async getEmailInput(): Promise<string> {
     return await this.emailInput.getAttribute('value');
-  }
-
-  async risqueactionSelectLastOption(): Promise<void> {
-    await this.risqueactionSelect.all(by.tagName('option')).last().click();
-  }
-
-  async risqueactionSelectOption(option: string): Promise<void> {
-    await this.risqueactionSelect.sendKeys(option);
-  }
-
-  getRisqueactionSelect(): ElementFinder {
-    return this.risqueactionSelect;
-  }
-
-  async getRisqueactionSelectedOption(): Promise<string> {
-    return await this.risqueactionSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

@@ -6,25 +6,18 @@ import ma.greensupply.erm.repository.ProprietaireActionRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -32,7 +25,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for the {@link ProprietaireActionResource} REST controller.
  */
 @SpringBootTest(classes = KompliansApp.class)
-@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 public class ProprietaireActionResourceIT {
@@ -48,9 +40,6 @@ public class ProprietaireActionResourceIT {
 
     @Autowired
     private ProprietaireActionRepository proprietaireActionRepository;
-
-    @Mock
-    private ProprietaireActionRepository proprietaireActionRepositoryMock;
 
     @Autowired
     private EntityManager em;
@@ -147,26 +136,6 @@ public class ProprietaireActionResourceIT {
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)));
     }
     
-    @SuppressWarnings({"unchecked"})
-    public void getAllProprietaireActionsWithEagerRelationshipsIsEnabled() throws Exception {
-        when(proprietaireActionRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restProprietaireActionMockMvc.perform(get("/api/proprietaire-actions?eagerload=true"))
-            .andExpect(status().isOk());
-
-        verify(proprietaireActionRepositoryMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void getAllProprietaireActionsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        when(proprietaireActionRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restProprietaireActionMockMvc.perform(get("/api/proprietaire-actions?eagerload=true"))
-            .andExpect(status().isOk());
-
-        verify(proprietaireActionRepositoryMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
     @Test
     @Transactional
     public void getProprietaireAction() throws Exception {

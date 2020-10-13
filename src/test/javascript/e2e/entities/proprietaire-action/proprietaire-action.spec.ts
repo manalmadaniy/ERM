@@ -51,7 +51,6 @@ describe('ProprietaireAction e2e test', () => {
       proprietaireActionUpdatePage.setNomInput('nom'),
       proprietaireActionUpdatePage.setPrenomInput('prenom'),
       proprietaireActionUpdatePage.setEmailInput('email'),
-      // proprietaireActionUpdatePage.risqueactionSelectLastOption(),
     ]);
 
     expect(await proprietaireActionUpdatePage.getNomInput()).to.eq('nom', 'Expected Nom value to be equals to nom');

@@ -28,6 +28,7 @@
                     <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.tempsAction">Temps Action</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.coutAction">Cout Action</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.risque">Risque</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.proprietaireAction">Proprietaire Action</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -40,7 +41,12 @@
                     <td>{{ risqueaction.coutAction }}</td>
                     <td>
                         <div *ngIf="risqueaction.risque">
-                            <a [routerLink]="['/risque', risqueaction.risque?.id, 'view']" >{{ risqueaction.risque?.id }}</a>
+                            <a [routerLink]="['/risque', risqueaction.risque?.risquenom, 'view']" >{{ risqueaction.risque?.risquenom }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="risqueaction.proprietaireAction">
+                            <a [routerLink]="['/proprietaire-action', risqueaction.proprietaireAction?.id, 'view']" >{{ risqueaction.proprietaireAction?.email }}</a>
                         </div>
                     </td>
                     <td class="text-right">

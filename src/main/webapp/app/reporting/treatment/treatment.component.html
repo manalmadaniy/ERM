@@ -1,0 +1,48 @@
+
+<mat-paginator [length]="100"
+[pageSize]="10"
+[pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+<div>
+    <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risqueaction" [routerLink]="['/newaction']">
+        <fa-icon icon="plus"></fa-icon>
+        <span  >
+     Affectation des Actions
+        </span>
+    </button>
+</div>
+ 
+
+<br/>
+<div>
+<table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
+                
+    <thead>
+        <tr>
+            <th scope="col"><span>ID</span></th>
+            <th scope="col">Risque</th>
+            <th scope="col"><span>Responsable Action</span></th>
+
+            
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let risqueaction of risqueActions ">
+        
+            <td>{{ risqueaction.id }}</td>
+            <td>
+                <div *ngIf="risqueaction.risque">
+                    <a [routerLink]="['/risque', risqueaction.risque?.risquenom, 'view']" >{{ risqueaction.risque?.risquenom }}</a>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="risqueaction.proprietaireAction">
+                    <a [routerLink]="['/proprietaire-action', risqueaction.proprietaireAction?.id, 'view']" >{{ risqueaction.proprietaireAction?.email }}</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

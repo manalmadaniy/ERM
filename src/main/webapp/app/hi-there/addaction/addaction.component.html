@@ -1,0 +1,84 @@
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+
+
+
+<div>
+
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="risqueactions?.length === 0">
+        <span jhiTranslate="kompliansApp.risqueaction.home.notFound">No risqueactions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="risqueactions && risqueactions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.action">Action</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.risque">Risque</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.proprietaireAction">Proprietaire Action</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.planaction">Planaction</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.tempsAction">Temps Action</span></th>
+                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.coutAction">Cout Action</span></th>
+                   
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let risqueaction of risqueactions ;trackBy: trackId">
+                    <td><a [routerLink]="['/risqueaction', risqueaction.id, 'view']">{{ risqueaction.id }}</a></td>
+                    <td>{{ risqueaction.action }}</td>
+                    
+                    <td>
+                        <div *ngIf="risqueaction.risque">
+                            <a [routerLink]="['/risque', risqueaction.risque?.risquenom, 'view']" >{{ risqueaction.risque?.risquenom }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="risqueaction.proprietaireAction">
+                            <a [routerLink]="['/proprietaire-action', risqueaction.proprietaireAction?.id, 'view']" >{{ risqueaction.proprietaireAction?.email }}</a>
+                        </div>
+                    </td>
+                    
+                    <td>{{ risqueaction.planaction }}</td>
+                    <td>{{ risqueaction.tempsAction }}</td>
+
+                    <td>{{ risqueaction.coutAction }}</td>
+                   
+                   
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/risqueaction', risqueaction.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" >Détails</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/risqueaction', risqueaction.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" >Traiter</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(risqueaction)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" >Supprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

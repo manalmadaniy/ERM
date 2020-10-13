@@ -20,12 +20,10 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "risque",
-      "otherEntityRelationshipName": "processus",
       "relationshipName": "risque",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "otherEntityName": "risque",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "process"
     }
   ],
   "changelogDate": "20200909221636",

@@ -82,13 +82,12 @@ public class ProprietaireActionResource {
     /**
      * {@code GET  /proprietaire-actions} : get all the proprietaireActions.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of proprietaireActions in body.
      */
     @GetMapping("/proprietaire-actions")
-    public List<ProprietaireAction> getAllProprietaireActions(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<ProprietaireAction> getAllProprietaireActions() {
         log.debug("REST request to get all ProprietaireActions");
-        return proprietaireActionRepository.findAllWithEagerRelationships();
+        return proprietaireActionRepository.findAll();
     }
 
     /**
@@ -100,7 +99,7 @@ public class ProprietaireActionResource {
     @GetMapping("/proprietaire-actions/{id}")
     public ResponseEntity<ProprietaireAction> getProprietaireAction(@PathVariable Long id) {
         log.debug("REST request to get ProprietaireAction : {}", id);
-        Optional<ProprietaireAction> proprietaireAction = proprietaireActionRepository.findOneWithEagerRelationships(id);
+        Optional<ProprietaireAction> proprietaireAction = proprietaireActionRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(proprietaireAction);
     }
 

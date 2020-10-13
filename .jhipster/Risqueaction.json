@@ -27,12 +27,11 @@
       "otherEntityField": "id"
     },
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "proprietaireAction",
-      "otherEntityRelationshipName": "risqueaction",
       "relationshipName": "proprietaireAction",
-      "otherEntityField": "id",
-      "ownerSide": false
+      "otherEntityName": "proprietaireAction",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "email",
+      "otherEntityRelationshipName": "risqueaction"
     }
   ],
   "changelogDate": "20200909221536",

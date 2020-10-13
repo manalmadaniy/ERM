@@ -12,6 +12,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.risque" for="field_risque">Risque</label>
+                    <select class="form-control" id="field_risque" name="risque" formControlName="risque">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="risqueOption.id === editForm.get('risque')!.value?.id ? editForm.get('risque')!.value : risqueOption" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.risquenom }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.risqueCause" for="field_risqueCause">Risque Cause</label>
                     <input type="text" class="form-control" name="risqueCause" id="field_risqueCause"
                            formControlName="risqueCause"/>
@@ -19,13 +27,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.typeCause" for="field_typeCause">Type Cause</label>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Main Oeuvre</option>
-                        <option value="saab">Metier</option>
-                        <option value="opel">Materiel</option>
+                    <select type="text" class="form-control" name="typeCause" id="field_typeCause"
+                    formControlName="typeCause">
+                        <option value="Main Oeuvre">Main Oeuvre</option>
+                        <option value="Metier">Metier</option>
+                        <option value="Materiel">Materiel</option>
                       </select>
-                    <input type="text" class="form-control" name="typeCause" id="field_typeCause"
-                           formControlName="typeCause"/>
                            
                 </div>
 
@@ -41,13 +48,7 @@
                            formControlName="description"/>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueAnalyse.risque" for="field_risque">Risque</label>
-                    <select class="form-control" id="field_risque" name="risque" formControlName="risque">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="risqueOption.id === editForm.get('risque')!.value?.id ? editForm.get('risque')!.value : risqueOption" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.id }}</option>
-                    </select>
-                </div>
+               
             </div>
 
             <div>

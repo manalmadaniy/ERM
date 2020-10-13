@@ -1,93 +1,52 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
-        <mat-card fxFlex="50">
-            <jhi-bars></jhi-bars>
-        </mat-card>
-
-        <mat-card fxFlex="50">
-            <jhi-line></jhi-line>
-        </mat-card>
 
 
-    </div>
-</div>
 
-<mat-divider></mat-divider>
-<div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
-        <mat-card fxFlex="50">
+<ngb-accordion #acc="ngbAccordion">
+    <ngb-panel id="toggle-1" title="Risque Par Processus">
+      <ng-template ngbPanelContent>
+        <jhi-bars></jhi-bars>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="toggle-2" title="Risque par Mois">
+      <ng-template ngbPanelContent>
+        <jhi-line></jhi-line>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="toggle-3" title="Criticité">
+        <ng-template ngbPanelContent>
             <jhi-areas></jhi-areas>
-        </mat-card>
-
-        <mat-card fxFlex="50">
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="toggle-4" title="Matrice des Risques">
+        <ng-template ngbPanelContent>
             <jhi-treemap></jhi-treemap>
-        </mat-card>
-
-
-    </div>
-</div>
-
-<mat-divider></mat-divider>
-<br>
-<div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
-        <mat-card fxFlex="50">
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="toggle-5" title="Risque Par type de Cause">
+        <ng-template ngbPanelContent>
             <jhi-circle></jhi-circle>
-        </mat-card>
-
-        <mat-card fxFlex="50">
-            <table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
-                <table class="table table-striped" aria-describedby="page-heading">
-                    <thead>
-                        <tr>
-                            <th scope="col"><span>Risque Cause</span></th>
-                            <th scope="col"><span>Type Cause</span></th>
-
-                            <th scope="col"><span>Risque Cons</span></th>
-                            <th scope="col"><span>Description</span></th>
-                            <th scope="col"><span>Risque</span></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let risqueAnalyse of risqueAnalyses ;trackBy: trackId">
-                        
-                            <td>{{ risqueAnalyse.risqueCause }}</td>
-                            <td>{{ risqueAnalyse.typeCause }}</td>
-                            <td>{{ risqueAnalyse.risqueCons }}</td>
-                            <td>{{ risqueAnalyse.description }}</td>
-                            <td>
-                                <div *ngIf="risqueAnalyse.risque">
-                                    <a
-                                        [routerLink]="['/risque', risqueAnalyse.risque?.id, 'view']">{{ risqueAnalyse.risque?.id }}</a>
-                                </div>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-        </mat-card>
-
-
-    </div>
-</div>
-<br />
-<mat-divider></mat-divider>
-<div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
-        <mat-card fxFlex="50">
-            <jhi-areas></jhi-areas>
-        </mat-card>
-
-        <mat-card fxFlex="50">
-            <jhi-treemap></jhi-treemap>
-        </mat-card>
-
-
-    </div>
-</div>
-
-<mat-divider></mat-divider>
-<br>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="toggle-6" title="Traitement des Risques">
+        <ng-template ngbPanelContent>
+            <jhi-actiondiag></jhi-actiondiag>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="toggle-7" title="Risque Résiduel">
+        <ng-template ngbPanelContent>
+            <jhi-risqueresiduel></jhi-risqueresiduel>
+        </ng-template>
+      </ngb-panel>
+  </ngb-accordion>
+  
+  <hr/>
+  
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-1')">Risque Par Processus</button>
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-2')">Risque par Mois</button>
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-3')">Criticité</button>
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-4')">Matrice des Risques</button>
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-5')">Risque Par type de Cause</button>
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-6')">Traitement des Risques</button>
+  <button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-7')">Risque Résiduel</button>

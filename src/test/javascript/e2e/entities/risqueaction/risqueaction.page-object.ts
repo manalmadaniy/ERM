@@ -35,6 +35,7 @@ export class RisqueactionUpdatePage {
   coutActionInput = element(by.id('field_coutAction'));
 
   risqueSelect = element(by.id('field_risque'));
+  proprietaireActionSelect = element(by.id('field_proprietaireAction'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -86,6 +87,22 @@ export class RisqueactionUpdatePage {
 
   async getRisqueSelectedOption(): Promise<string> {
     return await this.risqueSelect.element(by.css('option:checked')).getText();
+  }
+
+  async proprietaireActionSelectLastOption(): Promise<void> {
+    await this.proprietaireActionSelect.all(by.tagName('option')).last().click();
+  }
+
+  async proprietaireActionSelectOption(option: string): Promise<void> {
+    await this.proprietaireActionSelect.sendKeys(option);
+  }
+
+  getProprietaireActionSelect(): ElementFinder {
+    return this.proprietaireActionSelect;
+  }
+
+  async getProprietaireActionSelectedOption(): Promise<string> {
+    return await this.proprietaireActionSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

@@ -19,7 +19,20 @@
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a class="nav-link" routerLink="reporting" (click)="collapseNavbar()">
                                     <fa-icon icon="hand-spock" [fixedWidth]="true"></fa-icon>
-                                    <span jhiTranslate="global.menu.reporting">Reporting</span>
+                                    <span >Gestion des Risques</span>
+                                </a>
+                            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <a class="nav-link" routerLink="hi-there" (click)="collapseNavbar()">
+                                    <fa-icon icon="hand-spock" [fixedWidth]="true"></fa-icon>
+                                    <span >Gestion des Actions</span>
+                                </a>
+                            </li>
+          
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <a class="nav-link" routerLink="b-ireporting" (click)="collapseNavbar()">
+                                    <fa-icon icon="hand-spock" [fixedWidth]="true"></fa-icon>
+                                    <span jhiTranslate="global.menu.b-ireporting">B Ireporting</span>
                                 </a>
                             </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
@@ -33,6 +46,13 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+
+                    <li>
+                        <a class="dropdown-item" routerLink="process" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.process">Process</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="dropdown-item" routerLink="risque" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
@@ -46,23 +66,19 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" routerLink="risqueaction" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.risqueaction">Risqueaction</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="process" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.process">Process</span>
-                        </a>
-                    </li>
-                    <li>
                         <a class="dropdown-item" routerLink="proprietaire-action" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.proprietaireAction">Proprietaire Action</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="risqueaction" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.risqueaction">Risqueaction</span>
+                        </a>
+                    </li>
+                   
+                   
                     <li>
                         <a class="dropdown-item" routerLink="risque-residuel" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
@@ -108,7 +124,7 @@
                     <li>
                         <a class="dropdown-item" routerLink="admin/audits" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="bell" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.admin.audits">Reporting</span>
+                            <span >Espace Risk Manager</span>
                         </a>
                     </li>
                     <li>

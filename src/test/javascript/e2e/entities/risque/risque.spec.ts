@@ -46,6 +46,7 @@ describe('Risque e2e test', () => {
       risqueUpdatePage.setImpactInput('5'),
       risqueUpdatePage.setProbabilityInput('5'),
       risqueUpdatePage.setDetectionInput('5'),
+      risqueUpdatePage.processSelectLastOption(),
     ]);
 
     expect(await risqueUpdatePage.getRisquenomInput()).to.eq('risquenom', 'Expected Risquenom value to be equals to risquenom');

@@ -12,6 +12,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueResiduel.risque" for="field_risque">Risque</label>
+                    <select class="form-control" id="field_risque" name="risque" formControlName="risque">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="risqueOption.id === editForm.get('risque')!.value?.id ? editForm.get('risque')!.value : risqueOption" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.risquenom }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risqueResiduel.impact" for="field_impact">Impact</label>
                     <input type="number" class="form-control" name="impact" id="field_impact"
                            formControlName="impact"/>
@@ -29,13 +37,7 @@
                            formControlName="detection"/>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="kompliansApp.risqueResiduel.risque" for="field_risque">Risque</label>
-                    <select class="form-control" id="field_risque" name="risque" formControlName="risque">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="risqueOption.id === editForm.get('risque')!.value?.id ? editForm.get('risque')!.value : risqueOption" *ngFor="let risqueOption of risques; trackBy: trackById">{{ risqueOption.risquenom }}</option>
-                    </select>
-                </div>
+               
             </div>
 
             <div>

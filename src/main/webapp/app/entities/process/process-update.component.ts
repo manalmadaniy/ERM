@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { IProcess, Process } from 'app/shared/model/process.model';
 import { ProcessService } from './process.service';
-import { IRisque } from 'app/shared/model/risque.model';
-import { RisqueService } from 'app/entities/risque/risque.service';
 
 @Component({
   selector: 'jhi-process-update',
@@ -16,7 +14,6 @@ import { RisqueService } from 'app/entities/risque/risque.service';
 })
 export class ProcessUpdateComponent implements OnInit {
   isSaving = false;
-  risques: IRisque[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -24,21 +21,13 @@ export class ProcessUpdateComponent implements OnInit {
     fonction: [],
     description: [],
     date: [],
-    risques: [],
   });
 
-  constructor(
-    protected processService: ProcessService,
-    protected risqueService: RisqueService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected processService: ProcessService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ process }) => {
       this.updateForm(process);
-
-      this.risqueService.query().subscribe((res: HttpResponse<IRisque[]>) => (this.risques = res.body || []));
     });
   }
 
@@ -49,7 +38,6 @@ export class ProcessUpdateComponent implements OnInit {
       fonction: process.fonction,
       description: process.description,
       date: process.date,
-      risques: process.risques,
     });
   }
 
@@ -75,7 +63,6 @@ export class ProcessUpdateComponent implements OnInit {
       fonction: this.editForm.get(['fonction'])!.value,
       description: this.editForm.get(['description'])!.value,
       date: this.editForm.get(['date'])!.value,
-      risques: this.editForm.get(['risques'])!.value,
     };
   }
 
@@ -93,20 +80,5 @@ export class ProcessUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IRisque): any {
-    return item.id;
-  }
-
-  getSelected(selectedVals: IRisque[], option: IRisque): IRisque {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

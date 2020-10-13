@@ -1,0 +1,68 @@
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+
+
+<div>
+<h2 id="page-heading">
+    <span >Analyse des Risques </span>
+
+    <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risque-analyse" [routerLink]="['/risque-analyse/new']">
+        <fa-icon icon="plus"></fa-icon>
+        <span  >
+        
+        </span>
+    </button>
+</h2>
+</div>
+<table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
+                
+    <thead>
+        <tr>
+            <th scope="col"><span>Risque</span></th>
+
+            <th scope="col"><span>Risque Cause</span></th>
+            <th scope="col"><span>Type Cause</span></th>
+
+            <th scope="col"><span>Risque Cons</span></th>
+            <th scope="col"><span>Description</span></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let risqueAnalyse of risqueAnalyses ">
+            <td>
+                <div *ngIf="risqueAnalyse.risque">
+                    <a
+                        [routerLink]="['/risque', risqueAnalyse.risque?.risquenom, 'view']">{{ risqueAnalyse.risque?.risquenom }}</a>
+                </div>
+            </td>
+            <td>{{ risqueAnalyse.risqueCause }}</td>
+            <td>{{ risqueAnalyse.typeCause }}</td>
+            <td>{{ risqueAnalyse.risqueCons }}</td>
+            <td>{{ risqueAnalyse.description }}</td>
+           
+            <td class="text-right">
+                <div class="btn-group">
+                    <button type="submit"
+                            [routerLink]="['/risque-analyse', risqueAnalyse.id, 'view']"
+                            class="btn btn-info btn-sm">
+                        <fa-icon icon="eye"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                    </button>
+
+                    <button type="submit"
+                            [routerLink]="['/risque-analyse', risqueAnalyse.id, 'edit']"
+                            class="btn btn-primary btn-sm">
+                        <fa-icon icon="pencil-alt"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                    </button>
+
+                  
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

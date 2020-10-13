@@ -45,7 +45,6 @@ describe('Process e2e test', () => {
       processUpdatePage.setFonctionInput('fonction'),
       processUpdatePage.setDescriptionInput('description'),
       processUpdatePage.setDateInput('date'),
-      // processUpdatePage.risqueSelectLastOption(),
     ]);
 
     expect(await processUpdatePage.getNameProcessInput()).to.eq('nameProcess', 'Expected NameProcess value to be equals to nameProcess');

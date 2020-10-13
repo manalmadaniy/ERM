@@ -23,8 +23,8 @@
       "detection": "Detection",
       "risqueanalyse": "Risqueanalyse",
       "risqueaction": "Risqueaction",
-      "processus": "Processus",
-      "risqueResiduel": "Risque Residuel"
+      "risqueResiduel": "Risque Residuel",
+      "process": "Process"
     }
   }
 }

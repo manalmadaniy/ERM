@@ -8,7 +8,7 @@ export interface IRisqueaction {
   tempsAction?: number;
   coutAction?: number;
   risque?: IRisque;
-  proprietaireActions?: IProprietaireAction[];
+  proprietaireAction?: IProprietaireAction;
 }
 
 export class Risqueaction implements IRisqueaction {
@@ -19,6 +19,6 @@ export class Risqueaction implements IRisqueaction {
     public tempsAction?: number,
     public coutAction?: number,
     public risque?: IRisque,
-    public proprietaireActions?: IProprietaireAction[]
+    public proprietaireAction?: IProprietaireAction
   ) {}
 }

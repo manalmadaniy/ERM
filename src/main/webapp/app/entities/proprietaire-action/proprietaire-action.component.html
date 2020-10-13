@@ -26,7 +26,6 @@
                     <th scope="col" ><span jhiTranslate="kompliansApp.proprietaireAction.nom">Nom</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.proprietaireAction.prenom">Prenom</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.proprietaireAction.email">Email</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.proprietaireAction.risqueaction">Risqueaction</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -36,11 +35,6 @@
                     <td>{{ proprietaireAction.nom }}</td>
                     <td>{{ proprietaireAction.prenom }}</td>
                     <td>{{ proprietaireAction.email }}</td>
-                    <td>
-                        <span *ngFor="let risqueaction of proprietaireAction.risqueactions; let last = last">
-                            <a class="form-control-static" [routerLink]="['/risqueaction', risqueaction?.id, 'view']">{{ risqueaction.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

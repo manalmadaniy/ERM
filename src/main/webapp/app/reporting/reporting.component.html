@@ -2,19 +2,33 @@
 
 
 
-<mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen"><jhi-sidebar></jhi-sidebar></mat-drawer>
-    <mat-drawer-content>
-        
-        <button (click)="SideBarToggle()"   class="btn" ><i class="fa fa-bars"></i></button>
 
-        <router-outlet></router-outlet>
 
+<ngb-tabset [destroyOnHide]="false">
+    <ngb-tab title="OverView">
+      <ng-template ngbTabContent>
+        <jhi-dashboard></jhi-dashboard>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="PowerBI Report">
+      <ng-template ngbTabContent>
+        <jhi-powerbi></jhi-powerbi> 
+      </ng-template>
+    </ngb-tab>
     
-
-
-    </mat-drawer-content>
-
-
-
-</mat-drawer-container>
+    <ngb-tab title="Identification">
+        <ng-template ngbTabContent>
+            <jhi-identification></jhi-identification>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Analyse">
+        <ng-template ngbTabContent>
+            <jhi-analyse></jhi-analyse>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Affectation">
+        <ng-template ngbTabContent>
+            <jhi-treatment></jhi-treatment>
+        </ng-template>
+      </ngb-tab>
+  </ngb-tabset>

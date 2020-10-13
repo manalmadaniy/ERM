@@ -11,6 +11,9 @@ import { Account } from 'app/core/user/account.model';
   styleUrls: ['home.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  images = ['https://images.pexels.com/photos/3183170/pexels-photo-3183170.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'https://images.pexels.com/photos/106344/pexels-photo-106344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'];
+
   account: Account | null = null;
   authSubscription?: Subscription;
 

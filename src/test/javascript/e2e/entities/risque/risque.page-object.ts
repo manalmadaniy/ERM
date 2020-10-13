@@ -35,6 +35,8 @@ export class RisqueUpdatePage {
   probabilityInput = element(by.id('field_probability'));
   detectionInput = element(by.id('field_detection'));
 
+  processSelect = element(by.id('field_process'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
@@ -77,6 +79,22 @@ export class RisqueUpdatePage {
 
   async getDetectionInput(): Promise<string> {
     return await this.detectionInput.getAttribute('value');
+  }
+
+  async processSelectLastOption(): Promise<void> {
+    await this.processSelect.all(by.tagName('option')).last().click();
+  }
+
+  async processSelectOption(option: string): Promise<void> {
+    await this.processSelect.sendKeys(option);
+  }
+
+  getProcessSelect(): ElementFinder {
+    return this.processSelect;
+  }
+
+  async getProcessSelectedOption(): Promise<string> {
+    return await this.processSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

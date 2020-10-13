@@ -28,13 +28,6 @@
                     <input type="text" class="form-control" name="email" id="field_email"
                            formControlName="email"/>
                 </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="kompliansApp.proprietaireAction.risqueaction" for="field_risqueactions">Risqueaction</label>
-                    <select class="form-control" id="field_risqueactions" multiple name="risqueactions" formControlName="risqueactions">
-                        <option [ngValue]="getSelected(editForm.get('risqueactions')!.value, risqueactionOption)" *ngFor="let risqueactionOption of risqueactions; trackBy: trackById">{{ risqueactionOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

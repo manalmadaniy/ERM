@@ -31,6 +31,9 @@
             <column name="detection" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="process_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

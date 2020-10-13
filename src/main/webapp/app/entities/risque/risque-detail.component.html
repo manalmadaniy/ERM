@@ -28,6 +28,12 @@
                 <dd>
                     <span>{{ risque.detection }}</span>
                 </dd>
+                <dt><span jhiTranslate="kompliansApp.risque.process">Process</span></dt>
+                <dd>
+                    <div *ngIf="risque.process">
+                        <a [routerLink]="['/process', risque.process?.id, 'view']">{{ risque.process?.nameProcess }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

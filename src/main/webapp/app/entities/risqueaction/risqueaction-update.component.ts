@@ -9,6 +9,10 @@ import { IRisqueaction, Risqueaction } from 'app/shared/model/risqueaction.model
 import { RisqueactionService } from './risqueaction.service';
 import { IRisque } from 'app/shared/model/risque.model';
 import { RisqueService } from 'app/entities/risque/risque.service';
+import { IProprietaireAction } from 'app/shared/model/proprietaire-action.model';
+import { ProprietaireActionService } from 'app/entities/proprietaire-action/proprietaire-action.service';
+
+type SelectableEntity = IRisque | IProprietaireAction;
 
 @Component({
   selector: 'jhi-risqueaction-update',
@@ -17,6 +21,7 @@ import { RisqueService } from 'app/entities/risque/risque.service';
 export class RisqueactionUpdateComponent implements OnInit {
   isSaving = false;
   risques: IRisque[] = [];
+  proprietaireactions: IProprietaireAction[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -25,11 +30,13 @@ export class RisqueactionUpdateComponent implements OnInit {
     tempsAction: [],
     coutAction: [],
     risque: [],
+    proprietaireAction: [],
   });
 
   constructor(
     protected risqueactionService: RisqueactionService,
     protected risqueService: RisqueService,
+    protected proprietaireActionService: ProprietaireActionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -39,6 +46,10 @@ export class RisqueactionUpdateComponent implements OnInit {
       this.updateForm(risqueaction);
 
       this.risqueService.query().subscribe((res: HttpResponse<IRisque[]>) => (this.risques = res.body || []));
+
+      this.proprietaireActionService
+        .query()
+        .subscribe((res: HttpResponse<IProprietaireAction[]>) => (this.proprietaireactions = res.body || []));
     });
   }
 
@@ -50,6 +61,7 @@ export class RisqueactionUpdateComponent implements OnInit {
       tempsAction: risqueaction.tempsAction,
       coutAction: risqueaction.coutAction,
       risque: risqueaction.risque,
+      proprietaireAction: risqueaction.proprietaireAction,
     });
   }
 
@@ -76,6 +88,7 @@ export class RisqueactionUpdateComponent implements OnInit {
       tempsAction: this.editForm.get(['tempsAction'])!.value,
       coutAction: this.editForm.get(['coutAction'])!.value,
       risque: this.editForm.get(['risque'])!.value,
+      proprietaireAction: this.editForm.get(['proprietaireAction'])!.value,
     };
   }
 
@@ -95,7 +108,7 @@ export class RisqueactionUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IRisque): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

@@ -5,6 +5,9 @@
     "menu": {
       "home": "Accueil",
       "reporting": "Reporting",
+      "hi-there": "Hi There",
+      "power-bi-report": "Power Bi Report",
+      "b-ireporting": "B Ireporting",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",

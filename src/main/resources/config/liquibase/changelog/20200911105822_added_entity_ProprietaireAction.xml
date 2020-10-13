@@ -31,17 +31,6 @@
 
     <changeSet id="20200911105822-1-relations" author="jhipster">
 
-        <createTable tableName="proprietaire_action_risqueaction">
-            <column name="risqueaction_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="proprietaire_action_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="proprietaire_action_id, risqueaction_id" tableName="proprietaire_action_risqueaction"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

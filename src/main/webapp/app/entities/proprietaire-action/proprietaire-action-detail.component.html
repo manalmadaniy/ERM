@@ -20,12 +20,6 @@
                 <dd>
                     <span>{{ proprietaireAction.email }}</span>
                 </dd>
-                <dt><span jhiTranslate="kompliansApp.proprietaireAction.risqueaction">Risqueaction</span></dt>
-                <dd>
-                    <span *ngFor="let risqueaction of proprietaireAction.risqueactions; let last = last">
-                        <a [routerLink]="['/risqueaction', risqueaction?.id, 'view']">{{ risqueaction.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

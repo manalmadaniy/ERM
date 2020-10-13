@@ -1,7 +1,7 @@
 import { IRisqueAnalyse } from 'app/shared/model/risque-analyse.model';
 import { IRisqueaction } from 'app/shared/model/risqueaction.model';
-import { IProcess } from 'app/shared/model/process.model';
 import { IRisqueResiduel } from 'app/shared/model/risque-residuel.model';
+import { IProcess } from 'app/shared/model/process.model';
 
 export interface IRisque {
   id?: number;
@@ -12,8 +12,8 @@ export interface IRisque {
   detection?: number;
   risqueanalyses?: IRisqueAnalyse[];
   risqueactions?: IRisqueaction[];
-  processuses?: IProcess[];
   risqueResiduel?: IRisqueResiduel;
+  process?: IProcess;
 }
 
 export class Risque implements IRisque {
@@ -26,7 +26,7 @@ export class Risque implements IRisque {
     public detection?: number,
     public risqueanalyses?: IRisqueAnalyse[],
     public risqueactions?: IRisqueaction[],
-    public processuses?: IProcess[],
-    public risqueResiduel?: IRisqueResiduel
+    public risqueResiduel?: IRisqueResiduel,
+    public process?: IProcess
   ) {}
 }

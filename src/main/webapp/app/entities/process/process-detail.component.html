@@ -24,12 +24,6 @@
                 <dd>
                     <span>{{ process.date }}</span>
                 </dd>
-                <dt><span jhiTranslate="kompliansApp.process.risque">Risque</span></dt>
-                <dd>
-                    <span *ngFor="let risque of process.risques; let last = last">
-                        <a [routerLink]="['/risque', risque?.id, 'view']">{{ risque.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

@@ -35,11 +35,8 @@ public class Process implements Serializable {
     @Column(name = "date")
     private String date;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "process")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "process_risque",
-               joinColumns = @JoinColumn(name = "process_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "risque_id", referencedColumnName = "id"))
     private Set<Risque> risques = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -114,13 +111,13 @@ public class Process implements Serializable {
 
     public Process addRisque(Risque risque) {
         this.risques.add(risque);
-        risque.getProcessuses().add(this);
+        risque.setProcess(this);
         return this;
     }
 
     public Process removeRisque(Risque risque) {
         this.risques.remove(risque);
-        risque.getProcessuses().remove(this);
+        risque.setProcess(null);
         return this;
     }
 

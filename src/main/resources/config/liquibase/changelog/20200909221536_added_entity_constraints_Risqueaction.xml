@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="risque"/>
 
+        <addForeignKeyConstraint baseColumnNames="proprietaire_action_id"
+                                 baseTableName="risqueaction"
+                                 constraintName="fk_risqueaction_proprietaire_action_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="proprietaire_action"/>
+
     </changeSet>
 </databaseChangeLog>

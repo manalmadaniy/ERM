@@ -1,0 +1,59 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kompliansApp.risque.home.title">Risques</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risque" [routerLink]="['/risque/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  >
+            </span>
+        </button>
+    </h2>
+</div>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+<!--<mat-paginator> provides navigation for paged information, typically used with a table.
+
+-->
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+
+
+<div class="mat-elevation-z8">
+    <table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
+                
+        <thead>
+            <tr>
+                <th scope="col"><span>RisqueID</span></th>
+                <th scope="col"><span>Risque</span></th>
+                <th scope="col"><span>Processus</span></th>
+
+                <th scope="col"><span>Description</span></th>
+                <th scope="col"><span>Impact</span></th>
+                <th scope="col"><span>Probabilité</span></th>
+                <th scope="col">Détection</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let risque of risques ">
+            
+                <td>{{ risque.id }}</td>
+                <td>{{ risque.risquenom  }}</td>
+                <td>
+                    <div *ngIf="risque.process">
+                        <a [routerLink]="['/process', risque.process?.id, 'view']" >{{ risque.process?.nameProcess }}</a>
+                    </div>
+                </td>
+                <td>{{ risque.descrisque }}</td>
+                <td>{{ risque.impact }}</td>
+                <td>{{ risque.probability }}</td>
+                    <td>{{ risque.detection }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

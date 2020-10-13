@@ -6,8 +6,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A ProprietaireAction.
@@ -31,13 +29,6 @@ public class ProprietaireAction implements Serializable {
 
     @Column(name = "email")
     private String email;
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "proprietaire_action_risqueaction",
-               joinColumns = @JoinColumn(name = "proprietaire_action_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "risqueaction_id", referencedColumnName = "id"))
-    private Set<Risqueaction> risqueactions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -85,31 +76,6 @@ public class ProprietaireAction implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Set<Risqueaction> getRisqueactions() {
-        return risqueactions;
-    }
-
-    public ProprietaireAction risqueactions(Set<Risqueaction> risqueactions) {
-        this.risqueactions = risqueactions;
-        return this;
-    }
-
-    public ProprietaireAction addRisqueaction(Risqueaction risqueaction) {
-        this.risqueactions.add(risqueaction);
-        risqueaction.getProprietaireActions().add(this);
-        return this;
-    }
-
-    public ProprietaireAction removeRisqueaction(Risqueaction risqueaction) {
-        this.risqueactions.remove(risqueaction);
-        risqueaction.getProprietaireActions().remove(this);
-        return this;
-    }
-
-    public void setRisqueactions(Set<Risqueaction> risqueactions) {
-        this.risqueactions = risqueactions;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

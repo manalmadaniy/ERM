@@ -30,6 +30,12 @@
                         <a [routerLink]="['/risque', risqueaction.risque?.id, 'view']">{{ risqueaction.risque?.id }}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="kompliansApp.risqueaction.proprietaireAction">Proprietaire Action</span></dt>
+                <dd>
+                    <div *ngIf="risqueaction.proprietaireAction">
+                        <a [routerLink]="['/proprietaire-action', risqueaction.proprietaireAction?.id, 'view']">{{ risqueaction.proprietaireAction?.email }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

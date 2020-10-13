@@ -36,18 +36,17 @@
       "relationshipName": "risqueaction"
     },
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "process",
-      "otherEntityRelationshipName": "risque",
-      "relationshipName": "processus",
-      "otherEntityField": "id",
-      "ownerSide": false
-    },
-    {
       "relationshipName": "risqueResiduel",
       "otherEntityName": "risqueResiduel",
       "relationshipType": "one-to-one",
       "ownerSide": false,
+      "otherEntityRelationshipName": "risque"
+    },
+    {
+      "relationshipName": "process",
+      "otherEntityName": "process",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "nameProcess",
       "otherEntityRelationshipName": "risque"
     }
   ],

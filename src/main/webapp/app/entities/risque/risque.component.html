@@ -28,6 +28,7 @@
                     <th scope="col"  jhiSortBy="impact"><span jhiTranslate="kompliansApp.risque.impact">Impact</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="probability"><span jhiTranslate="kompliansApp.risque.probability">Probability</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="detection"><span jhiTranslate="kompliansApp.risque.detection">Detection</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="process.nameProcess"><span jhiTranslate="kompliansApp.risque.process">Process</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -39,6 +40,11 @@
                     <td>{{ risque.impact }}</td>
                     <td>{{ risque.probability }}</td>
                     <td>{{ risque.detection }}</td>
+                    <td>
+                        <div *ngIf="risque.process">
+                            <a [routerLink]="['/process', risque.process?.id, 'view']" >{{ risque.process?.nameProcess }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

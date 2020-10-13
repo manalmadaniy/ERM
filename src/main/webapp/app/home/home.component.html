@@ -1,88 +1,34 @@
 
   
 
-    <div  >
-
-        <div class="background" style="background-image: url('https://www.objectif-emploi-orientation.fr/wp-content/uploads/2018/09/risk-manager.jpg');  background-repeat: no-repeat;   background-size: 100% 100%;
-        ">
-
-
-
-          
-    
+    <ngb-carousel *ngIf="images" >
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class=image [src]="images[0]" alt="Random first slide" >
         </div>
-      
-        <mat-divider></mat-divider>
-        <div class="jumbotron text-center"><h1>Les Caractéristiques</h1>
-       </div> 
-
-        <mat-divider></mat-divider>
-<div> <h2> Nous vous proposons un moyen simple de gérer les défis de gestion des risques les plus complexes.</h2></div>
-
-        <mat-divider></mat-divider>
-        <div>
-            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
-                <mat-card fxFlex="50"><h1>Identification des risques
-                    </h1><img src="https://www.standardfusion.com/wp-content/uploads/2019/07/risk_assessment-SS.png"/><p>
-                        En tirant parti de l'utilisation de notre bibliothèque de menaces intégrée, nous facilitons le processus d'identification des risques qui vous sont applicables. Le logiciel StandardFusion GRC vous permet de suivre non seulement le risque, mais également les actifs associés.</p></mat-card>
-                
-                <mat-card fxFlex="50"> <h1>Evaluation des Risques</h1> 
-                    <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/risk_analysis-SS.png"/>
-               <p>
-                Une fois identifiés, vous pouvez évaluer vos risques à l'aide de l'une de nos nombreuses méthodologies de risque qualitatives et quantitatives incluses, ou définir vos propres calculs. </p>
-               
-                </mat-card>
-
-            </div>
-            <div>
-                <mat-card fxFlex="50"> <h1>
-                    Créer des liens
-                    Là où ils comptent</h1> 
-                    <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/Single-Source-copy.png"/>
-               <p>
-
-                Reliez les contrôles spécifiques à l'organisation à vos risques tout en suivant la maturité, les tests et l'efficacité des contrôles. Identifiez les processus qui atténuent vos risques et identifiez facilement les menaces pour votre organisation.               
-                </mat-card>
-
-                <mat-card fxFlex="50"> <h1>
-                  Traitement Des Risques</h1> 
-                    <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/control_management-SS.png"/>
-               <p>
-
-
-                Connectez vos risques aux contrôles d'atténuation pour montrer comment votre organisation traite ses menaces. Visualisez sur une carte de chaleur ou dans un rapport pour avoir une vue globale des risques qui vous empêchent de dormir la nuit.</p>                </mat-card>
-            </div>
-            <div>
-                <mat-card fxFlex="50"> <h1>
-                    Data and
-                    Reporting
-                    </h1> 
-                      <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/data_reporting-SS.png"/>
-                 <p>
-                    Générez de superbes rapports pour tous les publics, qu'il s'agisse de résumés de haut niveau ou de rapports de conformité détaillés. exploitez les données de StandardFusion pour fournir des informations sur votre organisation.
-  
-                  </p>          
-                      </mat-card>
-              
-
-
-                  <mat-card fxFlex="50"> <h1>
-                    Analyse des Risques </h1> 
-                      <img src="https://www.standardfusion.com/wp-content/uploads/2019/07/Graph-SS.png"/>
-                 <p>
-  
-  
-              
-Surveillez l'état de vos risques et voyez comment ils évoluent au fil du temps. Suivez les progrès et comprenez comment les changements affectent votre entreprise. Suivez les tendances et analysez les effets que les facteurs internes et externes affectent vos niveaux de risque au fil du temps.</p>                </mat-card>
-              
-
-
-</div>
-
-
-            </div>
+        <div class="carousel-caption">
+          <h3>Identification des Risques</h3>
         </div>
-        <mat-divider></mat-divider>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class=image [src]="images[1]" alt="Random second slide">
+        </div>
+        <div class="carousel-caption">
+          <h3>Evaluation de Vos Risques</h3>
+        
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class=image [src]="images[2]" alt="Random third slide" >
+        </div>
+        <div class="carousel-caption">
+          <h3>Reporting & Dashboard</h3>
+         
+        </div>
+      </ng-template>
+    </ngb-carousel>
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
@@ -106,9 +52,81 @@ Surveillez l'état de vos risques et voyez comment ils évoluent au fil du temps
         </p>
 
         <ul>
-            <li><a href="https://komplians.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage">Komplians homepage</a></li>
+            <li><a href="https://komplians.tech/" target="_blank" rel="noopener noreferrer" >Komplians homepage</a></li>
            
         </ul>
+      
+        <div class="jumbotron text-center"><h1>Les Caractéristiques</h1><h2> Nous vous proposons un moyen simple de gérer les défis de gestion des risques les plus complexes.</h2>
+       </div> 
+
+       
+
+        <mat-divider></mat-divider>
+        <div class="center-div">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGab="50px" class="stats-cards">
+                <mat-card fxFlex="50"><h1>Identification des risques
+                    </h1><img class=icons src="https://www.standardfusion.com/wp-content/uploads/2019/07/risk_assessment-SS.png"/><p>
+                        En tirant parti de l'utilisation de notre bibliothèque de menaces intégrée, nous facilitons le processus d'identification des risques qui vous sont applicables. Le logiciel Komplians vous permet de suivre non seulement le risque, mais également les actifs associés.</p></mat-card>
+                
+                <mat-card fxFlex="50"> <h1>Evaluation des Risques</h1> 
+                    <img class=icons src="https://www.standardfusion.com/wp-content/uploads/2019/07/risk_analysis-SS.png"/>
+               <p>
+                Une fois identifiés, vous pouvez évaluer vos risques à l'aide de l'une de nos nombreuses méthodologies de risque qualitatives et quantitatives incluses, ou définir vos propres calculs. </p>
+               
+                </mat-card>
+
+            </div>
+            <div>
+                <mat-card fxFlex="50"> <h1>
+                    Créer des liens
+                    Là où ils comptent</h1> 
+                    <img  class=icons src="https://www.standardfusion.com/wp-content/uploads/2019/07/Single-Source-copy.png"/>
+               <p>
+
+                Reliez les contrôles spécifiques à l'organisation à vos risques tout en suivant la maturité, les tests et l'efficacité des contrôles. Identifiez les processus qui atténuent vos risques et identifiez facilement les menaces pour votre organisation.               
+                </mat-card>
+
+                <mat-card fxFlex="50"> <h1>
+                  Traitement Des Risques</h1> 
+                    <img  class=icons src="https://www.standardfusion.com/wp-content/uploads/2019/07/control_management-SS.png"/>
+               <p>
+
+
+                Connectez vos risques aux contrôles d'atténuation pour montrer comment votre organisation traite ses menaces. Visualisez sur une carte de chaleur ou dans un rapport pour avoir une vue globale des risques qui vous empêchent de dormir la nuit.</p>                </mat-card>
+            </div>
+            <div>
+                <mat-card fxFlex="50"> <h1>
+                    Data and
+                    Reporting
+                    </h1> 
+                      <img class=icons src="https://www.standardfusion.com/wp-content/uploads/2019/07/data_reporting-SS.png"/>
+                 <p>
+                    Générez de superbes rapports pour tous les publics, qu'il s'agisse de résumés de haut niveau ou de rapports de conformité détaillés. exploitez les données de Komplians pour fournir des informations sur votre organisation.
+  
+                  </p>          
+                      </mat-card>
+              
+
+
+                  <mat-card fxFlex="50"> <h1>
+                    Analyse des Risques </h1> 
+                      <img class=icons src="https://www.standardfusion.com/wp-content/uploads/2019/07/Graph-SS.png"/>
+                 <p>
+  
+  
+              
+Surveillez l'état de vos risques et voyez comment ils évoluent au fil du temps. Suivez les progrès et comprenez comment les changements affectent votre entreprise. Suivez les tendances et analysez les effets que les facteurs internes et externes affectent vos niveaux de risque au fil du temps.</p>                </mat-card>
+              
+
+
+</div>
+
+
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+       
 
         
    

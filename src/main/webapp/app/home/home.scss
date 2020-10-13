@@ -22,19 +22,36 @@ Main page styles
     }
 }
 
-img{
-  width: 85px;
-  height: 85px;
-  object-fit: cover;
-  border-radius: 30%;
-}
+
 .jumbotron {
-  background-color: #669999; /* Orange */
+  background-color: #9fd6d6; /* Orange */
   color: #ffffff;
 }
 
 .background {
 
   padding: 250px 100px;
+
+}
+
+.center-div
+{
+  margin: 0 auto;
+  width: 600px;
+  height: 100%;
+ 
+ 
+}
+.image{
+
+  height:500px;
+  width: 100%;
+
+}
+
+.icons{
+
+  height: 60px;
+  width: 50%;
 
 }

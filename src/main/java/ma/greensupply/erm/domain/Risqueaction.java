@@ -1,6 +1,5 @@
 package ma.greensupply.erm.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -8,8 +7,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Risqueaction.
@@ -41,10 +38,9 @@ public class Risqueaction implements Serializable {
     @JsonIgnoreProperties(value = "risqueactions", allowSetters = true)
     private Risque risque;
 
-    @ManyToMany(mappedBy = "risqueactions")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private Set<ProprietaireAction> proprietaireActions = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "risqueactions", allowSetters = true)
+    private ProprietaireAction proprietaireAction;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -120,29 +116,17 @@ public class Risqueaction implements Serializable {
         this.risque = risque;
     }
 
-    public Set<ProprietaireAction> getProprietaireActions() {
-        return proprietaireActions;
+    public ProprietaireAction getProprietaireAction() {
+        return proprietaireAction;
     }
 
-    public Risqueaction proprietaireActions(Set<ProprietaireAction> proprietaireActions) {
-        this.proprietaireActions = proprietaireActions;
+    public Risqueaction proprietaireAction(ProprietaireAction proprietaireAction) {
+        this.proprietaireAction = proprietaireAction;
         return this;
     }
 
-    public Risqueaction addProprietaireAction(ProprietaireAction proprietaireAction) {
-        this.proprietaireActions.add(proprietaireAction);
-        proprietaireAction.getRisqueactions().add(this);
-        return this;
-    }
-
-    public Risqueaction removeProprietaireAction(ProprietaireAction proprietaireAction) {
-        this.proprietaireActions.remove(proprietaireAction);
-        proprietaireAction.getRisqueactions().remove(this);
-        return this;
-    }
-
-    public void setProprietaireActions(Set<ProprietaireAction> proprietaireActions) {
-        this.proprietaireActions = proprietaireActions;
+    public void setProprietaireAction(ProprietaireAction proprietaireAction) {
+        this.proprietaireAction = proprietaireAction;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

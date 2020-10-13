@@ -27,7 +27,6 @@
                     <th scope="col" ><span jhiTranslate="kompliansApp.process.fonction">Fonction</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.process.description">Description</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.process.date">Date</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.process.risque">Risque</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,11 +37,6 @@
                     <td>{{ process.fonction }}</td>
                     <td>{{ process.description }}</td>
                     <td>{{ process.date }}</td>
-                    <td>
-                        <span *ngFor="let risque of process.risques; let last = last">
-                            <a class="form-control-static" [routerLink]="['/risque', risque?.id, 'view']">{{ risque.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

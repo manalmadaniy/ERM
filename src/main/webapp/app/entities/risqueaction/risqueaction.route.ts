@@ -39,7 +39,7 @@ export const risqueactionRoute: Routes = [
     path: '',
     component: RisqueactionComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: [Authority.USER],
       pageTitle: 'kompliansApp.risqueaction.home.title',
     },
     canActivate: [UserRouteAccessService],

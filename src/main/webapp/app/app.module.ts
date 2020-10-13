@@ -8,6 +8,8 @@ import { KompliansAppRoutingModule } from './app-routing.module';
 import { KompliansHomeModule } from './home/home.module';
 import { KompliansEntityModule } from './entities/entity.module';
 import { KompliansAppReportingModule } from './reporting/reporting.module';
+import { KompliansAppHiThereModule } from './hi-there/hi-there.module';
+import { KompliansAppBIreportingModule } from './b-ireporting/b-ireporting.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -23,6 +25,8 @@ import { ErrorComponent } from './layouts/error/error.component';
     KompliansCoreModule,
     KompliansHomeModule,
     KompliansAppReportingModule,
+    KompliansAppHiThereModule,
+    KompliansAppBIreportingModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     KompliansEntityModule,
     KompliansAppRoutingModule,

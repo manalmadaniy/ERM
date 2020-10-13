@@ -82,13 +82,12 @@ public class ProcessResource {
     /**
      * {@code GET  /processes} : get all the processes.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of processes in body.
      */
     @GetMapping("/processes")
-    public List<Process> getAllProcesses(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<Process> getAllProcesses() {
         log.debug("REST request to get all Processes");
-        return processRepository.findAllWithEagerRelationships();
+        return processRepository.findAll();
     }
 
     /**
@@ -100,7 +99,7 @@ public class ProcessResource {
     @GetMapping("/processes/{id}")
     public ResponseEntity<Process> getProcess(@PathVariable Long id) {
         log.debug("REST request to get Process : {}", id);
-        Optional<Process> process = processRepository.findOneWithEagerRelationships(id);
+        Optional<Process> process = processRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(process);
     }
 

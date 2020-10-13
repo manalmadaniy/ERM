@@ -31,6 +31,9 @@
             <column name="risque_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="proprietaire_action_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

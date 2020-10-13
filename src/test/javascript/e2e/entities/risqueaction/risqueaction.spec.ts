@@ -49,6 +49,7 @@ describe('Risqueaction e2e test', () => {
       risqueactionUpdatePage.setTempsActionInput('5'),
       risqueactionUpdatePage.setCoutActionInput('5'),
       risqueactionUpdatePage.risqueSelectLastOption(),
+      risqueactionUpdatePage.proprietaireActionSelectLastOption(),
     ]);
 
     expect(await risqueactionUpdatePage.getActionInput()).to.eq('action', 'Expected Action value to be equals to action');
