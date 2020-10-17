@@ -6,7 +6,6 @@ import { RisqueactionDeleteDialogComponent } from 'app/entities/risqueaction/ris
 import { RisqueactionService } from 'app/entities/risqueaction/risqueaction.service';
 import { IRisqueaction } from 'app/shared/model/risqueaction.model';
 import { JhiEventManager } from 'ng-jhipster';
-import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
@@ -15,12 +14,11 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./showaction.component.scss']
 })
 export class ShowactionComponent implements OnInit {
-  actions$: Observable<IRisqueaction[]>;
+  exportColumns!: any[];
+  cols!: any[];
 
   risqueactions: IRisqueaction[];
-  eventSubscriber?: Subscription;
-  filter = new FormControl('');
-
+  rowGroupMetadata: any;
   constructor(
     protected risqueactionService: RisqueactionService,
     protected eventManager: JhiEventManager,
@@ -29,9 +27,7 @@ export class ShowactionComponent implements OnInit {
   ) {
 
     this.risqueactions = []
-    this.actions$ = this.filter.valueChanges.pipe(
-      startWith(''),
-      map(text => this.search(text)));
+      
   }
 
   loadAll(): void {
@@ -40,26 +36,51 @@ export class ShowactionComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAll();
-    this.registerChangeInRisqueactions();
-    
+    this.updateRowGroupMetaData();
+    this.cols = [
+      { field: 'Action', header: 'Action' },
+      { field: 'risque', header: 'risque' },
+      { field: 'Planaction', header: 'Planaction' },
+      { field: 'Temps Action', header: 'Temps Action' },
+      { field: 'Cout Action', header: 'Cout Action' }
+  ];
+
+  this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
   }
 
- 
- search(text: string): IRisqueaction[] {
-    return this.risqueactions.filter(country => {
-      const term = text.toLowerCase();
-      return country.action!.toLowerCase().includes(term)
-         
-    });
-  }
+  onSort() :void{
+    this.updateRowGroupMetaData();
+}
+  updateRowGroupMetaData() :void{
+    this.rowGroupMetadata = {};
+        if (this.risqueactions) {
+            for (let i = 0; i < this.risqueactions.length; i++) {
+                const rowData = this.risqueactions[i];
+                const brand = rowData.proprietaireAction?.email!;
+                if (i === 0) {
+                    this.rowGroupMetadata[brand] = { index: 0, size: 1 };
+                }
+                else {
+                    const previousRowData = this.risqueactions[i - 1];
+                    const previousRowGroup = previousRowData.proprietaireAction?.email!;
+                    if (brand === previousRowGroup)
+                        this.rowGroupMetadata[brand].size++;
+                    else
+                        this.rowGroupMetadata[brand] = { index: i, size: 1 };
+                }
+            }
+        }
+    }
+
+   
+
+  
   trackId(index: number, item: IRisqueaction): number {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     return item.id!;
   }
 
-  registerChangeInRisqueactions(): void {
-    this.eventSubscriber = this.eventManager.subscribe('risqueactionListModification', () => this.loadAll());
-  }
+ 
 
   delete(risqueaction: IRisqueaction): void {
     const modalRef = this.modalService.open(RisqueactionDeleteDialogComponent, { size: 'lg', backdrop: 'static' });

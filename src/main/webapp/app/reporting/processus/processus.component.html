@@ -1,63 +1,63 @@
 
-<div class="card"> 
 <p-toolbar styleClass="p-mb-4">
     <ng-template pTemplate="left">
-        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" [routerLink]="['/risque-analyse/new']"></button>
+        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" [routerLink]="['/process/new']"></button>
     </ng-template>
 
     <ng-template pTemplate="right">
         <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
     </ng-template>
 </p-toolbar>
-<p-table [value]="risqueAnalyses" [paginator]="true" [rows]="10" sortField="rowData.typeCause" sortMode="single" (onSort)="onSort()"   dataKey="rowData.proprietaireAction?.email">
+<p-table [value]="processes" [paginator]="true" [rows]="10" sortField="rowData.nameProcess" sortMode="single" (onSort)="onSort()"   dataKey="rowData.proprietaireAction?.email">
     
     <ng-template pTemplate="header">
         <tr>
-            <th pSortableColumn="Risque">Risque <p-sortIcon field="Risque"></p-sortIcon></th>
-            <th pSortableColumn="Risque Cause">Risque Cause  <p-sortIcon field="Risque Cause"></p-sortIcon></th>
-            <th>Conséquence</th>
-            <th>Description</th>
-            
+          
+            <th pSortableColumn="Fonction">Fonction  <p-sortIcon field="Fonction"></p-sortIcon></th>
            
+            <th>Description</th>
+            <th>Date</th>
           
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-expanded="expanded">
         
-            <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.typeCause].index === rowIndex" class="row-accessories">
+            <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.nameProcess].index === rowIndex" class="row-accessories">
                 <td colspan="5">
                     <button type="button" pButton pRipple [pRowToggler]="rowData" class="p-button-text p-button-rounded p-button-plain p-mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-                    <span class="p-text-bold p-ml-2">{{rowData.typeCause}}</span>
+                    <span class="p-text-bold p-ml-2">{{rowData.nameProcess}}</span>
                 </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="rowexpansion" let-rowData>
-            <tr [ngClass]="{'row-accessories': rowData.typeCause === 'Metier','row-accessoriesneg': rowData.typeCause === 'Main Oeuvre','row-accessoriesvide': rowData.typeCause === 'Materiel'}" >
-                <td>{{rowData.risque?.risquenom }}</td>
-            <td>{{rowData.risqueCause}}</td>
-            <td>{{rowData.risqueCons }}</td>
-            <td>{{rowData.description}}</td>
+            <tr >
+                <td>{{rowData.fonction }}</td>
+            <td>{{rowData.description }}</td>
+            <td>{{rowData.date }}</td>
             <td class="text-right">
                 <div class="btn-group">
                     <button type="submit"
-                            [routerLink]="['/risque-analyse', rowData.id, 'view']"
+                            [routerLink]="['/process', rowData.id, 'view']"
                             class="btn btn-info btn-sm">
                         <fa-icon icon="eye"></fa-icon>
                         <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                     </button>
 
                     <button type="submit"
-                            [routerLink]="['/risque-analyse', rowData.id, 'edit']"
+                            [routerLink]="['/process', rowData.id, 'edit']"
                             class="btn btn-primary btn-sm">
                         <fa-icon icon="pencil-alt"></fa-icon>
                         <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                     </button>
 
-                  
+                    <button type="submit" (click)="delete(rowData)"
+                            class="btn btn-danger btn-sm">
+                        <fa-icon icon="times"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
                 </div>
             </td>
         </tr>
     
     </ng-template>
 </p-table>
-</div>

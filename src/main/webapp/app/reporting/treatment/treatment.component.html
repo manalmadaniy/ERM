@@ -1,21 +1,29 @@
 
+
+<div class="card">
+
+
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" [routerLink]="['/newaction']"></button>
+        </ng-template>
+    
+        <ng-template pTemplate="right">
+            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+        </ng-template>
+    </p-toolbar>
+
+
+
 <mat-paginator [length]="100"
 [pageSize]="10"
 [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>
 
-<div>
-    <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risqueaction" [routerLink]="['/newaction']">
-        <fa-icon icon="plus"></fa-icon>
-        <span  >
-     Affectation des Actions
-        </span>
-    </button>
-</div>
- 
+
 
 <br/>
-<div>
+<div >
 <table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
                 
     <thead>
@@ -45,4 +53,5 @@
         </tr>
     </tbody>
 </table>
+</div>
 </div>

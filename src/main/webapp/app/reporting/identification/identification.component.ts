@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,6 +8,8 @@ import { RisqueAnalyseService } from 'app/entities/risque-analyse/risque-analyse
 import { RisqueService } from 'app/entities/risque/risque.service';
 import { IRisqueAnalyse } from 'app/shared/model/risque-analyse.model';
 import { IRisque, Risque } from 'app/shared/model/risque.model';
+import { Observable, Subscription } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'jhi-identification',
@@ -14,11 +17,18 @@ import { IRisque, Risque } from 'app/shared/model/risque.model';
   styleUrls: ['./identification.component.scss']
 })
 export class IdentificationComponent implements OnInit {
-  
+  actions$: Observable<IRisque[]>;
+
   risques: IRisque[];
   datasource = new MatTableDataSource
+  filter = new FormControl('');
+  eventSubscriber?: Subscription;
+
   constructor( protected risqueservice: RisqueService,) { 
     this.risques= []
+    this.actions$ = this.filter.valueChanges.pipe(
+      startWith(''),
+      map(text => this.search(text)));
   }
 
 
@@ -39,14 +49,16 @@ export class IdentificationComponent implements OnInit {
       this.datasource.data = this.risques
   }
 }
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.datasource.filter = filterValue.trim().toLowerCase();
 
-    if (this.datasource.paginator) {
-      this.datasource.paginator.firstPage();
-    }
-  }
+
+search(text: string): IRisque[] {
+  return this.risques.filter(country => {
+    const term = text.toLowerCase();
+    return country.risquenom!.toLowerCase().includes(term)
+       
+  });
+}
+  
   
 }
   

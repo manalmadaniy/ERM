@@ -4,31 +4,26 @@
 
 
 
-<ngb-tabset [destroyOnHide]="false">
-    <ngb-tab title="OverView">
-      <ng-template ngbTabContent>
-        <jhi-dashboard></jhi-dashboard>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="PowerBI Report">
-      <ng-template ngbTabContent>
-        <jhi-powerbi></jhi-powerbi> 
-      </ng-template>
-    </ngb-tab>
+
+  <p-tabView>
+    <p-tabPanel header="Processus">
+      <jhi-processus></jhi-processus> 
+    </p-tabPanel>
+    <p-tabPanel header="Identification">
+      <jhi-identification></jhi-identification>
+    </p-tabPanel>
+    <p-tabPanel header="Analyse">
+      <jhi-analyse></jhi-analyse>
+    </p-tabPanel>
+    <p-tabPanel header="Affectation">
+      <jhi-treatment></jhi-treatment>
+    </p-tabPanel>
+    <p-tabPanel header="Overview">
+      <jhi-dashboard></jhi-dashboard>
+    </p-tabPanel>
+    <p-tabPanel header="BI Reporting">
+      <jhi-powerbi></jhi-powerbi> 
+    </p-tabPanel>
+
     
-    <ngb-tab title="Identification">
-        <ng-template ngbTabContent>
-            <jhi-identification></jhi-identification>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="Analyse">
-        <ng-template ngbTabContent>
-            <jhi-analyse></jhi-analyse>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="Affectation">
-        <ng-template ngbTabContent>
-            <jhi-treatment></jhi-treatment>
-        </ng-template>
-      </ngb-tab>
-  </ngb-tabset>
+</p-tabView>

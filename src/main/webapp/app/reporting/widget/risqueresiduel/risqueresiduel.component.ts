@@ -86,7 +86,7 @@ export class RisqueresiduelComponent implements OnInit {
 },
 
 title: {
-    text: 'Highcharts bubbles with radial gradient fill'
+    text: 'Nuage de Criticité Du Risque Résiduel'
 },
 
 xAxis: {

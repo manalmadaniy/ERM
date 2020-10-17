@@ -1,18 +1,13 @@
-<div>
-    <h2 id="page-heading">
-        <span jhiTranslate="kompliansApp.risque.home.title">Risques</span>
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" [routerLink]="['/risque/new']"></button>
+    </ng-template>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risque" [routerLink]="['/risque/new']">
-            <fa-icon icon="plus"></fa-icon>
-            <span  >
-            </span>
-        </button>
-    </h2>
-</div>
-<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-  </mat-form-field>
+    <ng-template pTemplate="right">
+        <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+    </ng-template>
+</p-toolbar>
+
 <!--<mat-paginator> provides navigation for paged information, typically used with a table.
 
 -->
@@ -21,7 +16,11 @@
               [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>
 
-
+<form>
+    <div class="form-group form-inline">
+        search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+    </div>
+  </form>
 
 <div class="mat-elevation-z8">
     <table class="table table-striped" aria-describedby="page-heading"   width="75%" height="100">
@@ -42,16 +41,26 @@
             <tr *ngFor="let risque of risques ">
             
                 <td>{{ risque.id }}</td>
-                <td>{{ risque.risquenom  }}</td>
+                <td> <ngb-highlight [result]="risque.risquenom " [term]="filter.value"></ngb-highlight></td>
                 <td>
                     <div *ngIf="risque.process">
                         <a [routerLink]="['/process', risque.process?.id, 'view']" >{{ risque.process?.nameProcess }}</a>
                     </div>
                 </td>
                 <td>{{ risque.descrisque }}</td>
-                <td>{{ risque.impact }}</td>
-                <td>{{ risque.probability }}</td>
-                    <td>{{ risque.detection }}</td>
+                <td>
+                    <div [ngClass]="{'outofstock': risque.impact === 6,'high': risque.impact === 5 ,'lowstock': risque.impact === 4,'medium': risque.impact === 3,'instock': risque.impact === 2,'low': risque.impact === 1}">
+                        {{ risque.impact }}
+                    </div>
+                </td>
+                <td>
+                    <div [ngClass]="{'out': risque.probability === 6,'highp': risque.probability === 5 ,'lowstockp': risque.probability === 4,'mediump': risque.probability === 3,'instockp': risque.probability === 2,'lowp': risque.probability === 1}">
+                        {{ risque.probability }}
+                    </div>
+                 </td>
+                    <td><div [ngClass]="{'outd': risque.detection  === 6,'highd': risque.detection  === 5 ,'lowstockd': risque.detection  === 4,'mediumd': risque.detection  === 3,'instockd': risque.detection  === 2,'lowd': risque.detection  === 1}">
+                        {{ risque.detection }}
+                    </div></td>
 
             </tr>
         </tbody>

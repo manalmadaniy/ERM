@@ -1,84 +1,58 @@
-<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator>
 
+ 
+<p-table [value]="risqueactions" [paginator]="true" [rows]="10" sortField="rowData.proprietaireAction?.email" sortMode="single" (onSort)="onSort()"   dataKey="rowData.proprietaireAction?.email">
+    
+    <ng-template pTemplate="header">
+        <tr>
+          
+            <th pSortableColumn="action">Action <p-sortIcon field="action"></p-sortIcon></th>
+            <th pSortableColumn="risque">Risque  <p-sortIcon field="risque"></p-sortIcon></th>
+           
+            <th>Planaction</th>
+            <th>Temps Action</th>
+            <th>Cout Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-expanded="expanded">
+        
+            <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.proprietaireAction?.email].index === rowIndex">
+                <td colspan="5">
+                    <button type="button" pButton pRipple [pRowToggler]="rowData" class="p-button-text p-button-rounded p-button-plain p-mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    <span class="p-text-bold p-ml-2">{{rowData.proprietaireAction?.email}}</span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-rowData>
+            <tr [ngClass]="{'row-accessories': rowData.action === 'Agir','row-accessoriesneg': rowData.action === 'Négliger','row-accessoriesvide': rowData.action === null}">
+                <td>{{rowData.action}}</td>
+                <td>{{rowData.risque?.risquenom }}</td>
+            <td>{{rowData.planaction}}</td>
+            <td>{{rowData.tempsAction}}</td>
+            <td>{{rowData.coutAction }}</td>
+            <td class="text-right">
+                <div class="btn-group">
+                    <button type="submit"
+                            [routerLink]="['/risqueaction', rowData.id, 'view']"
+                            class="btn btn-info btn-sm">
+                        <fa-icon icon="eye"></fa-icon>
+                        <span class="d-none d-md-inline" >Détails</span>
+                    </button>
 
+                    <button type="submit"
+                            [routerLink]="['/risqueaction', rowData.id, 'edit']"
+                            class="btn btn-primary btn-sm">
+                        <fa-icon icon="pencil-alt"></fa-icon>
+                        <span class="d-none d-md-inline" >Traiter</span>
+                    </button>
 
-
-<div>
-
-
-    <jhi-alert-error></jhi-alert-error>
-
-    <jhi-alert></jhi-alert>
-
-    <div class="alert alert-warning" id="no-result" *ngIf="risqueactions?.length === 0">
-        <span jhiTranslate="kompliansApp.risqueaction.home.notFound">No risqueactions found</span>
-    </div>
-
-    <div class="table-responsive" id="entities" *ngIf="risqueactions && risqueactions.length > 0">
-        <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.action">Action</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.risque">Risque</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.proprietaireAction">Proprietaire Action</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.planaction">Planaction</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.tempsAction">Temps Action</span></th>
-                    <th scope="col" ><span jhiTranslate="kompliansApp.risqueaction.coutAction">Cout Action</span></th>
-                   
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let risqueaction of risqueactions ;trackBy: trackId">
-                    <td><a [routerLink]="['/risqueaction', risqueaction.id, 'view']">{{ risqueaction.id }}</a></td>
-                    <td>{{ risqueaction.action }}</td>
-                    
-                    <td>
-                        <div *ngIf="risqueaction.risque">
-                            <a [routerLink]="['/risque', risqueaction.risque?.risquenom, 'view']" >{{ risqueaction.risque?.risquenom }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="risqueaction.proprietaireAction">
-                            <a [routerLink]="['/proprietaire-action', risqueaction.proprietaireAction?.id, 'view']" >{{ risqueaction.proprietaireAction?.email }}</a>
-                        </div>
-                    </td>
-                    
-                    <td>{{ risqueaction.planaction }}</td>
-                    <td>{{ risqueaction.tempsAction }}</td>
-
-                    <td>{{ risqueaction.coutAction }}</td>
-                   
-                   
-                    <td class="text-right">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/risqueaction', risqueaction.id, 'view']"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" >Détails</span>
-                            </button>
-
-                            <button type="submit"
-                                    [routerLink]="['/risqueaction', risqueaction.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
-                                <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" >Traiter</span>
-                            </button>
-
-                            <button type="submit" (click)="delete(risqueaction)"
-                                    class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" >Supprimer</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+                    <button type="submit" (click)="delete(rowData)"
+                            class="btn btn-danger btn-sm">
+                        <fa-icon icon="times"></fa-icon>
+                        <span class="d-none d-md-inline" >Supprimer</span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    
+    </ng-template>
+</p-table>

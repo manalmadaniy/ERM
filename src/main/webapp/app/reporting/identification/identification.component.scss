@@ -10,3 +10,128 @@ table {
   td, th {
     width: 25%;
   }
+
+  .outofstock {
+    font-weight: 700;
+  color: white;
+  text-decoration: line-through;
+  background-color: #FF5252;
+  }
+.high {
+  font-weight: 700;
+  color: white;
+  text-decoration: line-through;
+  background-color: #FF5252;
+}
+
+.lowstock {
+    font-weight: 700;
+    color: white;
+    background-color: #FFA726 ;
+}
+
+.medium{
+  font-weight: 700;
+  color: white;
+  background-color: #FFA726 ;
+}
+
+.instock {
+    font-weight: 700;
+    color:white;
+    background-color: #66BB6A;
+}
+
+.low {
+  font-weight: 700;
+  color:white;
+  background-color: #66BB6A;
+}
+
+
+
+
+.out {
+  font-weight: 700;
+color: white;
+text-decoration: line-through;
+background-color: #FF5252;
+}
+.highp {
+font-weight: 700;
+color: white;
+text-decoration: line-through;
+background-color: #FF5252;
+}
+
+.lowstockp {
+  font-weight: 700;
+  color: white;
+  background-color: #FFA726 ;
+}
+
+.mediump{
+font-weight: 700;
+color: white;
+background-color: #FFA726 ;
+}
+
+.instockp {
+  font-weight: 700;
+  color:white;
+  background-color: #66BB6A;
+}
+
+.lowp {
+font-weight: 700;
+color:white;
+background-color: #66BB6A;
+}
+
+
+
+
+.outd {
+  font-weight: 700;
+color: white;
+text-decoration: line-through;
+background-color: #FF5252;
+}
+.highd {
+font-weight: 700;
+color: white;
+text-decoration: line-through;
+background-color: #FF5252;
+}
+
+.lowstockd{
+  font-weight: 700;
+  color: white;
+  background-color: #FFA726 ;
+}
+
+.mediumd{
+font-weight: 700;
+color: white;
+background-color: #FFA726 ;
+}
+
+.instockd {
+  font-weight: 700;
+  color:white;
+  background-color: #66BB6A;
+}
+
+.lowd {
+font-weight: 700;
+color:white;
+background-color: #66BB6A;
+}
+:host ::ng-deep .row-accessories {
+    background-color: rgba(0,0,0,.15) !important;
+}
+
+.head{
+
+  background-color: grey;
+}

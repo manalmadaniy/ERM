@@ -1,0 +1,16 @@
+body {
+    padding: 2em;
+    font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”;
+  }
+
+  :host ::ng-deep .row-accessories {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+:host ::ng-deep .row-accessoriesneg {
+  background-color: rgba(231, 91, 91, 0.15) !important;
+}
+
+:host ::ng-deep .row-accessoriesvide {
+  background-color: greenyellow!important;
+}

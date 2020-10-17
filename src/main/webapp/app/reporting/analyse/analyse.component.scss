@@ -1,0 +1,16 @@
+.head{
+
+    background-color: grey;
+}
+
+:host ::ng-deep .row-accessories {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+:host ::ng-deep .row-accessoriesneg {
+  background-color: rgba(231, 91, 91, 0.15) !important;
+}
+
+:host ::ng-deep .row-accessoriesvide {
+  background-color: greenyellow!important;
+}

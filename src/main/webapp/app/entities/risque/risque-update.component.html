@@ -27,26 +27,59 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risque.descrisque" for="field_descrisque">Descrisque</label>
-                    <input type="text" class="form-control" name="descrisque" id="field_descrisque"
-                           formControlName="descrisque"/>
+                    <textarea type="text" class="form-control" name="descrisque" id="field_descrisque"
+                           formControlName="descrisque" rows="4" cols="50"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risque.impact" for="field_impact">Impact</label>
-                    <input type="number" class="form-control" name="impact" id="field_impact"
-                           formControlName="impact"/>
+                  
+                           <select class="form-control" name="impact" id="field_impact"
+                           formControlName="impact">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                            <option value=6>6</option>
+                        
+
+
+                          </select>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risque.probability" for="field_probability">Probability</label>
-                    <input type="number" class="form-control" name="probability" id="field_probability"
-                           formControlName="probability"/>
+                    
+                           <select type="number" class="form-control" name="probability" id="field_probability"
+                           formControlName="probability">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                            <option value=6>6</option>
+                        
+
+
+                          </select>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kompliansApp.risque.detection" for="field_detection">Detection</label>
-                    <input type="number" class="form-control" name="detection" id="field_detection"
-                           formControlName="detection"/>
+                 
+                           <select type="number" class="form-control" name="detection" id="field_detection"
+                           formControlName="detection">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                            <option value=6>6</option>
+                        
+
+
+                          </select>
                 </div>
 
              

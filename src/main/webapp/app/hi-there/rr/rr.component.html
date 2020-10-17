@@ -1,17 +1,15 @@
 
-<div>
-    <h2 id="page-heading">
-      
-
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-risque-residuel" [routerLink]="['/risque-residuel/new']">
-            <fa-icon icon="plus"></fa-icon>
+<div class="card">
+   
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"  [routerLink]="['/risque-residuel/new']"></button>
+        </ng-template>
     
-        </button>
-    </h2>
-
-    <jhi-alert-error></jhi-alert-error>
-
-    <jhi-alert></jhi-alert>
+        <ng-template pTemplate="right">
+            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+        </ng-template>
+    </p-toolbar>
 
     <div class="alert alert-warning" id="no-result" *ngIf="risqueResiduels?.length === 0">
         <span jhiTranslate="kompliansApp.risqueResiduel.home.notFound">No risqueResiduels found</span>
@@ -21,7 +19,6 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="kompliansApp.risqueResiduel.risque">Risque</span></th>
 
                     <th scope="col" ><span jhiTranslate="kompliansApp.risqueResiduel.impact">Impact</span></th>
@@ -32,14 +29,19 @@
             </thead>
             <tbody>
                 <tr *ngFor="let risqueResiduel of risqueResiduels ;trackBy: trackId">
-                    <td><a [routerLink]="['/risque-residuel', risqueResiduel.id, 'view']">{{ risqueResiduel.id }}</a></td>
                     <td>
                         <div *ngIf="risqueResiduel.risque">
                             <a [routerLink]="['/risque', risqueResiduel.risque?.id, 'view']" >{{ risqueResiduel.risque?.risquenom }}</a>
                         </div>
                     </td>
-                    <td>{{ risqueResiduel.impact }}</td>
-                    <td>{{ risqueResiduel.probabilite }}</td>
+                    <td>
+                        <div [ngClass]="{'outofstock': risqueResiduel.impact === 6,'high': risqueResiduel.impact === 5 ,'lowstock': risqueResiduel.impact === 4,'medium': risqueResiduel.impact === 3,'instock': risqueResiduel.impact === 2,'low': risqueResiduel.impact === 1}">
+                            {{ risqueResiduel.impact }}
+                        </div></td>
+                    <td>
+                        <div [ngClass]="{'out': risqueResiduel.probabilite  === 6,'highp': risqueResiduel.probabilite  === 5 ,'lowstockp': risqueResiduel.probabilite  === 4,'mediump': risqueResiduel.probabilite  === 3,'instockp': risqueResiduel.probabilite === 2,'lowp': risqueResiduel.probabilite  === 1}">
+                            {{ risqueResiduel.probabilite }}
+                        </div></td>
                     <td>{{ risqueResiduel.detection }}</td>
                    
                     <td class="text-right">
